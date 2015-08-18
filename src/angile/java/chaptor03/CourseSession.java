@@ -20,7 +20,7 @@ public class CourseSession {
 		this.department = department;
 		this.number = number;
 	}
-
+	
 	public CourseSession(String department, String number, Date createDate) {
 		this.department = department;
 		this.number = number;
