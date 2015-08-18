@@ -3,6 +3,7 @@ package test.angile.java.chaptor03;
 import junit.framework.TestCase;
 import angile.java.chapter01.Student;
 import angile.java.chaptor03.CourseSession;
+import angile.java.chaptor03.RosterReporter;
 
 public class CourseSessionTest extends TestCase {
 
@@ -19,8 +20,8 @@ public class CourseSessionTest extends TestCase {
 		String rosterReport = session.getRosterReport();
 
 		assertEquals(
-				CourseSession.ROSTER_REPORT_HEADER  +
+				RosterReporter.ROSTER_REPORT_HEADER  +
 				"A\r\nB\r\n" +
-				CourseSession.ROSTER_REPORT_FOOTER + "2", rosterReport);
+				RosterReporter.ROSTER_REPORT_FOOTER + "2", rosterReport);
 	}
 }

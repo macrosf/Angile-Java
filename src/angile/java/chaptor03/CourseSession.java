@@ -6,9 +6,9 @@ import java.util.Date;
 import angile.java.chapter01.Student;
 
 public class CourseSession {
-	final static String  NEW_LINE = System.getProperty("line.separator");
-	public final static String ROSTER_REPORT_HEADER = "----HEADER----" + NEW_LINE;
-	public final static String ROSTER_REPORT_FOOTER = "----FOOTER----" + NEW_LINE;
+//	final static String  NEW_LINE = System.getProperty("line.separator");
+//	public final static String ROSTER_REPORT_HEADER = "----HEADER----" + NEW_LINE;
+//	public final static String ROSTER_REPORT_FOOTER = "----FOOTER----" + NEW_LINE;
 
 	private String department;
 	private String number;
@@ -39,12 +39,12 @@ public class CourseSession {
 	public String getRosterReport() {
 		StringBuilder buffer = new StringBuilder();
 
-		buffer.append(ROSTER_REPORT_HEADER);
+		buffer.append(RosterReporter.ROSTER_REPORT_HEADER);
 //		buffer.append(students.get(0).getName()).append(NEW_LINE);
 //		buffer.append(students.get(1).getName()).append(NEW_LINE);
 		for (Student student : students)
-			buffer.append(student.getName()).append(NEW_LINE);
-		buffer.append(ROSTER_REPORT_FOOTER);
+			buffer.append(student.getName()).append(RosterReporter.NEW_LINE);
+		buffer.append(RosterReporter.ROSTER_REPORT_FOOTER);
 		buffer.append(students.size());
 
 		return buffer.toString();
