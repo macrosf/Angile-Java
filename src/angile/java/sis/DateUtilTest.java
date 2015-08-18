@@ -1,10 +1,9 @@
-package test.angile.java.chaptor03;
+package angile.java.sis;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import angile.java.chaptor03.DateUtil;
 import junit.framework.TestCase;
 
 public class DateUtilTest extends TestCase {

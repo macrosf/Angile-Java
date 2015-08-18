@@ -1,10 +1,9 @@
-package test.angile.java.chaptor03;
+package angile.java.sis.report;
 
+import angile.java.sis.DateUtil;
+import angile.java.sis.studentinfo.CourseSession;
+import angile.java.sis.studentinfo.Student;
 import junit.framework.TestCase;
-import angile.java.chapter01.Student;
-import angile.java.chaptor03.CourseSession;
-import angile.java.chaptor03.DateUtil;
-import angile.java.chaptor03.RosterReporter;
 
 public class RosterReporterTest extends TestCase {
 

@@ -1,7 +1,9 @@
-package test.angile.java.chaptor03;
+package angile.java.sis;
 
+import angile.java.sis.report.RosterReporterTest;
+import angile.java.sis.studentinfo.CourseSessionTest;
+import angile.java.sis.studentinfo.StudentTest;
 import junit.framework.TestCase;
-import test.angile.java.chapter01.StudentTest;
 
 public class AllTests extends TestCase{
 
