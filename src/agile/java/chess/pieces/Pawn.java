@@ -7,7 +7,7 @@ public class Pawn {
 	public final static String BLACK_PAWN_VALUE = "P";
 
 	private String color;
-	private String value;
+	//private String value;
 
 	// public Pawn(String color, String toString) {
 	// setColor(color);
@@ -19,22 +19,22 @@ public class Pawn {
 
 	/**
 	 * construct pawn with a specified color
-	 * 
+	 *
 	 * @param color
 	 */
 	public Pawn(String color) {
-		this.color = color;
+		setColor(color);
 	}
 
 	/**
 	 * construct pawn with a default color
 	 */
 	public Pawn() {
-		this.color = WHITE_COLOR;
+		setColor(WHITE_COLOR);
 	}
 
 	public String print() {
-		
+
 		if (WHITE_COLOR.equals(color))
 			return WHITE_PAWN_VALUE;
 		else
@@ -54,14 +54,6 @@ public class Pawn {
 	 */
 	private void setColor(String color) {
 		this.color = color;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	private void setValue(String value) {
-		this.value = value;
 	}
 
 }

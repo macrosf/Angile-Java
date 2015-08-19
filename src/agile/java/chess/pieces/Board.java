@@ -19,6 +19,10 @@ public class Board {
 		return pawns.size();
 	}
 
+	public ArrayList<ArrayList<Pawn>> getPawns() {
+		return pawns;
+	}
+
 	private void initialize() {
 
 		pawns = new ArrayList<ArrayList<Pawn>>(8);

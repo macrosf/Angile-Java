@@ -1,7 +1,10 @@
 package agile.java.chess;
 
+import java.util.ArrayList;
+
 import junit.framework.TestCase;
 import agile.java.chess.pieces.Board;
+import agile.java.chess.pieces.Pawn;
 
 public class BoardTest extends TestCase {
 	private Board board;
@@ -33,7 +36,10 @@ public class BoardTest extends TestCase {
 		assertEquals(16, board.getPawnsNumber());
 	}
 
-//	public void testCreate() {
-//		for ()
-//	}
+	public void testCreate() {
+		StringBuilder buffer = new StringBuilder();
+		for (ArrayList<Pawn> aLine : board.getPawns()) {
+
+		}
+	}
 }
