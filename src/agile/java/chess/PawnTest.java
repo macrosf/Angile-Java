@@ -25,4 +25,15 @@ public class PawnTest extends junit.framework.TestCase {
 		assertEquals("123456", "12"+"34"+"56");
 		assertEquals("ABCD", "AB".concat("CD"));
 	}
+
+	//chapter 03 parctice
+	public void testPrint() {
+
+		Pawn p1 = new Pawn(Pawn.WHITE_COLOR);
+		Pawn p2 = new Pawn(Pawn.BLACK_COLOR);
+
+		assertEquals("p", p1.print());
+		assertEquals("P", p2.print());
+	}
+
 }
