@@ -1,14 +1,15 @@
 package agile.java.sis.report;
 
+import junit.framework.TestCase;
 import agile.java.sis.DateUtil;
 import agile.java.sis.studentinfo.CourseSession;
 import agile.java.sis.studentinfo.Student;
-import junit.framework.TestCase;
 
 public class RosterReporterTest extends TestCase {
 
 	public void testRosterReport() {
-		CourseSession session = new CourseSession("English", "101", DateUtil.createDate(2012, 10,10));
+		//CourseSession session = new CourseSession("English", "101", DateUtil.createDate(2012, 10,10));
+		CourseSession session = CourseSession.create("English", "101", DateUtil.createDate(2012, 10,10));
 
 		session.enroll(new Student("A"));
 		session.enroll(new Student("B"));

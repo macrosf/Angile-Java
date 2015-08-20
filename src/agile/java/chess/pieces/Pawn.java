@@ -5,6 +5,7 @@ public class Pawn {
 	public final static String BLACK_COLOR = "Black";
 	public final static String WHITE_PAWN_VALUE = "p";
 	public final static String BLACK_PAWN_VALUE = "P";
+	public final static String NO_COLOR_PAWN_VALUE  = " ";
 
 	private String color;
 	//private String value;
@@ -37,8 +38,10 @@ public class Pawn {
 
 		if (WHITE_COLOR.equals(color))
 			return WHITE_PAWN_VALUE;
-		else
+		else if (BLACK_COLOR.equals(color))
 			return BLACK_PAWN_VALUE;
+		else
+			return NO_COLOR_PAWN_VALUE;
 	}
 
 	/**
