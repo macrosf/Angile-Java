@@ -2,20 +2,41 @@ package agile.java.sis.studentinfo;
 
 public class Student {
 	private String name;
-	
-	public Student(String name){
-		this.setName(name);
+	private int credits;
+
+	public Student(String name) {
+		setName(name);
+		setCredits(0);
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getCredits() {
+		return credits;
+	}
+
+	private void setCredits(int credits) {
+		this.credits = credits;
+	}
+
+	public void addCredits(int credits) {
+		this.credits += credits;
+	}
+
+	boolean isFullTime() {
+		return credits>=12;
 	}
 }

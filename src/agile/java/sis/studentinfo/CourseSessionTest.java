@@ -45,6 +45,6 @@ public class CourseSessionTest extends TestCase {
 		createCourseSession();
 		//assertEquals(2, CourseSession.count);
 		assertEquals(2, CourseSession.getCount());
-
 	}
+
 }
