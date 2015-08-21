@@ -4,6 +4,6 @@ import junit.framework.TestCase;
 
 public class StringUtilTest extends TestCase {
 	public void testNewLine() {
-		assertEquals(StringUtil.NEW_LINE, "\r\n");
+		assertEquals(StringUtil.NEWLINE, "\r\n");
 	}
 }

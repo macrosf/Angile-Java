@@ -47,7 +47,7 @@ public class Board {
 				else
 					builder.append(NULL_PIECE_PRINT);
 			}
-			builder.append(StringUtil.NEW_LINE);
+			builder.append(StringUtil.NEWLINE);
 		}
 
 		return builder.toString();
