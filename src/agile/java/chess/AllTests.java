@@ -9,7 +9,7 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(BoardTest.class);
 		suite.addTestSuite(PawnTest.class);
 		suite.addTestSuite(CharacterTest.class);
-
+		suite.addTestSuite(PieceTest.class);
 		return suite;
 	}
 }

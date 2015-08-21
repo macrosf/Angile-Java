@@ -1,4 +1,4 @@
-package agile.java.sis;
+package agile.java.sis.util;
 
 import java.util.Calendar;
 import java.util.Date;

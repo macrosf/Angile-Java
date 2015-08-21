@@ -3,7 +3,8 @@ package agile.java.sis.studentinfo;
 public class Student {
 	private String name;
 	private int credits;
-
+	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
+	
 	public Student(String name) {
 		setName(name);
 		setCredits(0);
@@ -37,6 +38,6 @@ public class Student {
 	}
 
 	boolean isFullTime() {
-		return credits>=12;
+		return credits>=CREDITS_REQUIRED_FOR_FULL_TIME;
 	}
 }

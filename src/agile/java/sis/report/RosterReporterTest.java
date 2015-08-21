@@ -1,9 +1,9 @@
 package agile.java.sis.report;
 
 import junit.framework.TestCase;
-import agile.java.sis.DateUtil;
 import agile.java.sis.studentinfo.CourseSession;
 import agile.java.sis.studentinfo.Student;
+import agile.java.sis.util.DateUtil;
 
 public class RosterReporterTest extends TestCase {
 

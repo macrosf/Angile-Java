@@ -16,6 +16,7 @@ public class CourseSession {
 	private Date startDate;
 	private java.util.ArrayList<Student> students = new ArrayList<Student>();
 	private static int count;
+	private int numberOfCredits;
 
 //	public CourseSession(String department, String number){
 //		this.department = department;
@@ -51,6 +52,7 @@ public class CourseSession {
 
 	public void enroll(Student student) {
 		numberOfStudents++;
+		student.addCredits(numberOfCredits);
 		students.add(student);
 	}
 
@@ -107,6 +109,20 @@ public class CourseSession {
 	 */
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	/**
+	 * @return the numberOfCredits
+	 */
+	public int getNumberOfCredits() {
+		return numberOfCredits;
+	}
+
+	/**
+	 * @param numberOfCredits the numberOfCredits to set
+	 */
+	public void setNumberOfCredits(int numberOfCredits) {
+		this.numberOfCredits = numberOfCredits;
 	}
 
 }
