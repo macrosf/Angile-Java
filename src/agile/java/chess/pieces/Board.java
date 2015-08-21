@@ -1,70 +1,55 @@
 package agile.java.chess.pieces;
 
-import java.util.ArrayList;
+import agile.java.util.StringUtil;
 
 public class Board {
-	//private ArrayList<Pawn> pawns;
 
-	private ArrayList<ArrayList<Pawn>> pawns;
+	// constants
+	final static int BOARD_WIDTH = 8;
+	final static int BOARD_HEIGHT = 8;
+	public final static String LINE_TOP = "RNBQKBNR";
+	public final static String LINE_BOTTOM = LINE_TOP.toLowerCase();
+	final static String NULL_PIECE_PRINT = ".";
 
-	/**
-	 * construct board with an empty pawn list
-	 */
-	public Board() {
-		//setPawns(new ArrayList<Pawn>());
-		initialize();
-	}
+	//store all pieces
+	private Piece[][] board = new Piece[BOARD_HEIGHT][BOARD_WIDTH];
 
-	public int getSize() {
-		return pawns.size();
-	}
+	public void initialize() {
+		for (int i = 0; i < BOARD_WIDTH; i++) {
 
-	public ArrayList<ArrayList<Pawn>> getPawns() {
-		return pawns;
-	}
+			board[0][i] = Piece.create(Piece.BLACK_COLOR, LINE_TOP.substring(i, i+1));
+			board[1][i] = Piece.create(Piece.BLACK_COLOR, "P");
+			board[6][i] = Piece.create(Piece.WHITE_COLOR, "p");
+			board[7][i] = Piece.create(Piece.WHITE_COLOR, LINE_BOTTOM.substring(i, i+1));
 
-	private void initialize() {
-
-		pawns = new ArrayList<ArrayList<Pawn>>(8);
-
-		for(int i=0; i<8; i++) {
-			ArrayList<Pawn> aLine = new ArrayList<Pawn>(8);
-
-			if (i==1) {
-				for (int j=0; j<8; j++) {
-					aLine.add(new Pawn(Pawn.WHITE_COLOR));
-				}
-			}
-			else if (i==6) {
-				for (int j=0; j<8; j++) {
-					aLine.add(new Pawn(Pawn.BLACK_COLOR));
-				}
-			}
-
-			pawns.add(aLine);
 		}
 	}
 
-	public int getPawnsNumber() {
+	public int getPieceCount() {
 		int count = 0;
-		for	(ArrayList<Pawn> aLine : pawns) {
-			for (Pawn pawn : aLine) {
-				if (pawn != null) count++;
+		for (Piece[] aLine : board) {
+			for (Piece piece : aLine) {
+				if (piece != null)
+					count++;
 			}
 		}
 		return count;
 	}
-//	public void add(Pawn pawn) {
-//		pawns.add(pawn);
-//	}
-//
-//	public Pawn get(int i) {
-//		return pawns.get(i);
-//	}
-//	/**
-//	 * @param pawns the pawns to set
-//	 */
-//	public void setPawns(ArrayList<Pawn> pawns) {
-//		this.pawns = pawns;
-//	}
+
+	public String print() {
+
+		StringBuilder builder = new StringBuilder();
+
+		for (Piece[] aLine : board) {
+			for (Piece piece : aLine) {
+				if (piece != null)
+					builder.append(piece.getName());
+				else
+					builder.append(NULL_PIECE_PRINT);
+			}
+			builder.append(StringUtil.NEW_LINE);
+		}
+
+		return builder.toString();
+	}
 }

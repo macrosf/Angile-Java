@@ -2,7 +2,7 @@ package agile.java.sis.studentinfo;
 
 import java.util.Date;
 
-import agile.java.sis.util.DateUtil;
+import agile.java.util.DateUtil;
 import junit.framework.TestCase;
 
 public class CourseSessionTest extends TestCase {
