@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Student {
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
+	enum Grade {A, B, C, D, E, F};
+
 	private String name;
 	private int credits;
-	enum Grade {A, B, C, D, E, F};
 	//private ArrayList<String> grades = new ArrayList<String>();
 	private ArrayList<Grade> grades = new ArrayList<Grade>();
+	private GradingStrategy gradingStrategy = new RegularGradingStrategy();
 	
 	public Student(String name) {
 		setName(name);
@@ -34,7 +36,8 @@ public class Student {
 //			total +=gradePointFor(grade);
 //		}
 		for (Grade grade : grades) {
-			total +=gradePointFor(grade);
+			//total +=gradePointFor(grade);
+			total += gradingStrategy.getGradePointFor(grade);
 		}
 		return total / grades.size();
 	}
@@ -47,13 +50,14 @@ public class Student {
 //		return 0;
 //	}
 
-	private int gradePointFor(Grade grade) {
-		if (grade == Grade.A) return 4;
-		if (grade == Grade.B) return 3;
-		if (grade == Grade.C) return 2;
-		if (grade == Grade.D) return 1;
-		return 0;
-	}	
+//	private int gradePointFor(Grade grade) {
+////		if (grade == Grade.A) return 4;
+////		if (grade == Grade.B) return 3;
+////		if (grade == Grade.C) return 2;
+////		if (grade == Grade.D) return 1;
+////		return 0;
+//		return gradingStrategy.getGradePointFor(grade);
+//	}	
 	
 	void addCredits(int credits) {
 		this.credits += credits;
@@ -84,5 +88,9 @@ public class Student {
 
 	private void setCredits(int credits) {
 		this.credits = credits;
+	}
+
+	public void setGradingStrategy(GradingStrategy gradingStrategy) {
+		this.gradingStrategy = gradingStrategy;
 	}
 }

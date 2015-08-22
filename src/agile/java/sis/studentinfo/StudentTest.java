@@ -1,5 +1,7 @@
 package agile.java.sis.studentinfo;
 
+import agile.java.sis.studentinfo.Student.Grade;
+
 public class StudentTest extends junit.framework.TestCase {
 	private static final double GRADE_TOLERANCE = 0.05;
 	
@@ -60,6 +62,21 @@ public class StudentTest extends junit.framework.TestCase {
 		assertGpa(student, 2.5);
 		student.addGrade(Student.Grade.F);
 		assertGpa(student, 2.0);				
+	}
+	
+	public void testCalculateHonorsStudentGpa() {
+		assertGpa(createHonorsStudent("a", Grade.A), 5.0);
+		assertGpa(createHonorsStudent("a", Grade.B), 4.0);
+		assertGpa(createHonorsStudent("a", Grade.C), 3.0);
+		assertGpa(createHonorsStudent("a", Grade.D), 2.0);
+		assertGpa(createHonorsStudent("a", Grade.F), 0.0);
+	}
+	
+	private Student createHonorsStudent(String name, Grade grade) {
+		Student student = new Student(name);
+		student.addGrade(grade);
+		student.setGradingStrategy(new HonorsGrandingStrategy());
+		return student;
 	}
 	
 	private void assertGpa(Student student, double expectedGpa) {
