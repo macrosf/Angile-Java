@@ -1,6 +1,7 @@
 package agile.java.sis.studentinfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
@@ -9,7 +10,7 @@ public class Student {
 	private String name;
 	private int credits;
 	//private ArrayList<String> grades = new ArrayList<String>();
-	private ArrayList<Grade> grades = new ArrayList<Grade>();
+	private List<Grade> grades = new ArrayList<Grade>();
 	private GradingStrategy gradingStrategy = new RegularGradingStrategy();
 	
 	public Student(String name) {
