@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession>{
 //	final static String  NEW_LINE = System.getProperty("line.separator");
 //	public final static String ROSTER_REPORT_HEADER = "----HEADER----" + NEW_LINE;
 //	public final static String ROSTER_REPORT_FOOTER = "----FOOTER----" + NEW_LINE;
@@ -81,10 +81,10 @@ public class CourseSession {
 		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
 		return calendar.getTime();
 	}
+	
 	public ArrayList<Student> getAllStudents() {
 		return students;
 	}
-
 
 	/**
 	 * @return the department
@@ -123,6 +123,11 @@ public class CourseSession {
 	 */
 	public void setNumberOfCredits(int numberOfCredits) {
 		this.numberOfCredits = numberOfCredits;
+	}
+
+	@Override
+	public int compareTo(CourseSession that) {
+		return this.getDepartment().compareTo(that.getDepartment());
 	}
 
 }

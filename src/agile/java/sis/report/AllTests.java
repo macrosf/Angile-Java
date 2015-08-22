@@ -8,6 +8,7 @@ public class AllTests extends TestCase {
 		junit.framework.TestSuite suite = new junit.framework.TestSuite();
 
 		suite.addTestSuite(RosterReporterTest.class);
+		suite.addTestSuite(CourseReportTest.class);
 		return suite;
 	}
 
