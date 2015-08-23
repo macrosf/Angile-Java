@@ -1,7 +1,7 @@
 package agile.java.chess;
 
+import agile.java.chess.bak.Piece;
 import agile.java.chess.pieces.Board;
-import agile.java.chess.pieces.Piece;
 import agile.java.util.StringUtil;
 import junit.framework.TestCase;
 
