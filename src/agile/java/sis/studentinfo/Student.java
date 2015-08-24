@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Student {
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
-	enum Grade {A, B, C, D, E, F};
+	public enum Grade {A, B, C, D, E, F};
 
 	private String name;
 	private int credits;
 	//private ArrayList<String> grades = new ArrayList<String>();
 	private List<Grade> grades = new ArrayList<Grade>();
 	private GradingStrategy gradingStrategy = new RegularGradingStrategy();
-	
+
 	public Student(String name) {
 		setName(name);
 		setCredits(0);
@@ -24,12 +24,12 @@ public class Student {
 
 	void addGrade(Grade grade) {
 		grades.add(grade);
-	}	
-	
+	}
+
 	double getGpa() {
 		if (grades.isEmpty())
 			return 0.0;
-		
+
 		double total = 0.0;
 //		for(String grade : grades) {
 ////			if ("A".compareTo(grade)<=0 && "E".compareTo(grade)>=0)
@@ -38,11 +38,11 @@ public class Student {
 //		}
 		for (Grade grade : grades) {
 			//total +=gradePointFor(grade);
-			total += gradingStrategy.getGradePointFor(grade);
+			total += gradingStrategy.getGradePointsFor(grade);
 		}
 		return total / grades.size();
 	}
-	
+
 //	private int gradePointFor(String grade) {
 //		if ("A".equals(grade)) return 4;
 //		if ("B".equals(grade)) return 3;
@@ -58,8 +58,8 @@ public class Student {
 ////		if (grade == Grade.D) return 1;
 ////		return 0;
 //		return gradingStrategy.getGradePointFor(grade);
-//	}	
-	
+//	}
+
 	void addCredits(int credits) {
 		this.credits += credits;
 	}
@@ -67,7 +67,7 @@ public class Student {
 	boolean isFullTime() {
 		return credits>=CREDITS_REQUIRED_FOR_FULL_TIME;
 	}
-	
+
 	/**
 	 * @return the name
 	 */

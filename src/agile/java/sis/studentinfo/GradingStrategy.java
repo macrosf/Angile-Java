@@ -3,5 +3,5 @@ package agile.java.sis.studentinfo;
 import agile.java.sis.studentinfo.Student.Grade;
 
 public interface GradingStrategy {
-	int getGradePointFor(Grade grade);
+	int getGradePointsFor(Grade grade);
 }

@@ -9,6 +9,7 @@ public class AllTests extends TestCase {
 
 		suite.addTestSuite(RosterReporterTest.class);
 		suite.addTestSuite(CourseReportTest.class);
+		suite.addTestSuite(ReportCardTest.class);
 		return suite;
 	}
 
