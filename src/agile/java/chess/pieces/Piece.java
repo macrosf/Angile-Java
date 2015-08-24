@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class Piece {
 	//---constants----
-	public enum Color  {WHITE, BLACK, NO_COLOR};
+	public enum Color  {WHITE, BLACK, NO_COLOR, ANY_COLOR};
 	public enum Type {PAWM, ROOK, KNIGHT, BISHOP, QUEEN, KING, NO_PIECE};
 	public final static Character PAWN_REPRESENTATION = 'P';
 	public final static Character ROOK_REPRESENTATION = 'R';
-	public final static Character KNIGHT_REPRESENTATION = 'K';
+	public final static Character KNIGHT_REPRESENTATION = 'N';
 	public final static Character BISHOP_REPRESENTATION = 'B';
 	public final static Character QUEEN_REPRESENTATION = 'Q';
 	public final static Character KING_REPRESENTATION = 'K';
@@ -35,6 +35,9 @@ public class Piece {
 		setType(type);
 	};
 	
+	public static Piece createPiece(Color color, Type type) {
+		return new Piece(color, type);
+	}
 	public static Piece createWhitePawn() {
 		return new Piece(Color.WHITE, Type.PAWM);
 	}

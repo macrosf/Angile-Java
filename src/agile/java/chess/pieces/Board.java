@@ -1,10 +1,9 @@
 package agile.java.chess.pieces;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import agile.java.chess.pieces.Piece;
+import agile.java.chess.pieces.Piece.*;
 import agile.java.util.StringUtil;
 
 public class Board {
@@ -31,23 +30,30 @@ public class Board {
 	//----methods----
 	public void initialize() {
 		for (int i = 0; i < BOARD_WIDTH; i++) {
-
 //			board[0][i] = Piece.create(Piece.BLACK_COLOR, LINE_TOP.substring(i, i+1));
 //			board[1][i] = Piece.create(Piece.BLACK_COLOR, "P");
 //			board[6][i] = Piece.create(Piece.WHITE_COLOR, "p");
 //			board[7][i] = Piece.create(Piece.WHITE_COLOR, LINE_BOTTOM.substring(i, i+1));
+			board[0][i] = Piece.createPiece(Color.BLACK, initTypeList.get(i));
 			board[1][i] = Piece.createBlackPawn();
 			board[6][i] = Piece.createWhitePawn();
+			board[7][i] = Piece.createPiece(Color.WHITE, initTypeList.get(i));
 		}
-
 	}
 
-	public int getPieceCount() {
+	public int getPieceCount(Color color) {
 		int count = 0;
 		for (Piece[] aLine : board) {
 			for (Piece piece : aLine) {
 				if (piece != null)
-					count++;
+					switch(color) {
+					case ANY_COLOR: 
+						count++;
+						break;
+					default:
+						if (piece.getColor() == color )
+							count++;				
+					}
 			}
 		}
 		return count;
@@ -57,16 +63,16 @@ public class Board {
 
 		StringBuilder builder = new StringBuilder();
 
-		//TODO
-//		for (Piece[] aLine : board) {
-//			for (Piece piece : aLine) {
-//				if (piece != null)
-//					builder.append(piece.getName());
-//				else
-//					builder.append(NULL_PIECE_PRINT);
-//			}
-//			builder.append(StringUtil.NEWLINE);
-//		}
+		for (Piece[] aLine : board) {
+			for (Piece piece : aLine) {
+				if (piece != null)
+					//builder.append(piece.getName());
+					builder.append(piece.getRepresentation());
+				else
+					builder.append(NULL_PIECE_PRINT);
+			}
+			builder.append(StringUtil.NEWLINE);
+		}
 
 		return builder.toString();
 	}
