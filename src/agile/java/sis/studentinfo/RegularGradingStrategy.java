@@ -1,14 +1,13 @@
 package agile.java.sis.studentinfo;
 
-import agile.java.sis.studentinfo.Student.Grade;
 
 public class RegularGradingStrategy
 	extends BasicGrandingStrategy{
 
-	@Override
-	public  int getGradePointsFor(Grade grade) {
-		return basicGradePointsFor(grade);
-	}
+//	@Override
+//	public  int getGradePointsFor(Grade grade) {
+//		return basicGradePointsFor(grade);
+//	}
 
 //	public static int basicGradePointsFor(Grade grade) {
 //		if (grade == Grade.A) return 4;

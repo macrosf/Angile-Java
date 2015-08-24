@@ -8,7 +8,8 @@ public class HonorsGrandingStrategy
 	@Override
 	public int getGradePointsFor(Grade grade) {
 		//int point = RegularGradingStrategy.basicGradePointsFor(grade);
-		int point = basicGradePointsFor(grade);
+		//int point = basicGradePointsFor(grade);
+		int point = super.getGradePointsFor(grade);
 		if (point >0)
 			point += 1;
 		return point;
