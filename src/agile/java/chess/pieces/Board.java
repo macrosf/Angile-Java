@@ -3,7 +3,8 @@ package agile.java.chess.pieces;
 import java.util.Arrays;
 import java.util.List;
 
-import agile.java.chess.pieces.Piece.*;
+import agile.java.chess.pieces.Piece.Color;
+import agile.java.chess.pieces.Piece.Type;
 import agile.java.util.StringUtil;
 
 public class Board {
@@ -15,7 +16,7 @@ public class Board {
 	public final static String LINE_BOTTOM = LINE_TOP.toLowerCase();
 	final static String NULL_PIECE_PRINT = ".";
 	private static final List<Piece.Type> initTypeList 	= Arrays.<Piece.Type>asList(
-				Piece.Type.ROOK, 
+				Piece.Type.ROOK,
 				Piece.Type.KNIGHT,
 				Piece.Type.BISHOP,
 				Piece.Type.QUEEN,
@@ -23,7 +24,7 @@ public class Board {
 				Piece.Type.BISHOP,
 				Piece.Type.KNIGHT,
 				Piece.Type.ROOK);
-	
+
 	//----attributes----
 	private Piece[][] board = new Piece[BOARD_HEIGHT][BOARD_WIDTH];
 
@@ -47,12 +48,12 @@ public class Board {
 			for (Piece piece : aLine) {
 				if (piece != null)
 					switch(color) {
-					case ANY_COLOR: 
+					case ANY_COLOR:
 						count++;
 						break;
 					default:
 						if (piece.getColor() == color )
-							count++;				
+							count++;
 					}
 			}
 		}
@@ -75,5 +76,37 @@ public class Board {
 		}
 
 		return builder.toString();
+	}
+
+	public int getCountForSpecificPiece(Color color, Type type) {
+
+		int count = 0;
+		for (Piece[] aLine : board) {
+			for (Piece piece : aLine)
+				if (piece != null
+						&& piece.getColor()==color
+						&& piece.getType()==type)
+						count++;
+			}
+		return count;
+
+	}
+
+	public Piece getPieceAtPos(String pos) {
+		if (pos==null || pos.length()!=2)
+			return null;
+
+		Character ch = pos.toLowerCase().charAt(0);
+		int posY = Character.getNumericValue(ch) - Character.getNumericValue('a');
+
+		if (posY<0 || posY>BOARD_WIDTH-1)
+			return null;
+
+		ch = pos.charAt(1);
+		int posX = Character.getNumericValue(ch) - Character.getNumericValue('1');
+		if (posX<0 || posX>BOARD_HEIGHT-1)
+			return null;
+
+		return board[BOARD_HEIGHT - posX -1][posY];
 	}
 }

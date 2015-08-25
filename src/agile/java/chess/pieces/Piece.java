@@ -14,7 +14,7 @@ public class Piece {
 	public final static Character QUEEN_REPRESENTATION = 'Q';
 	public final static Character KING_REPRESENTATION = 'K';
 	public final static Character NOPIECE_REPRESENTATION = '.';
-	public final static Map<Type, Character> typeToRepresentation 
+	public final static Map<Type, Character> typeToRepresentation
 		= new HashMap<Type, Character>();
 	static {
 		typeToRepresentation.put(Type.PAWM, PAWN_REPRESENTATION);
@@ -34,7 +34,7 @@ public class Piece {
 		setColor(color);
 		setType(type);
 	};
-	
+
 	public static Piece createPiece(Color color, Type type) {
 		return new Piece(color, type);
 	}
@@ -44,81 +44,82 @@ public class Piece {
 
 	public static Piece createBlackPawn() {
 		return new Piece(Color.BLACK, Type.PAWM);
-	}	
-	
+	}
+
 	public static Piece createWhiteRook() {
 		return new Piece(Color.WHITE, Type.ROOK);
-	}	
-	
+	}
+
 	public static Piece createBlackRook() {
 		return new Piece(Color.BLACK, Type.ROOK);
-	}		
-	
+	}
+
 	public static Piece createWhiteKnight() {
 		return new Piece(Color.WHITE, Type.KNIGHT);
-	}	
-	
+	}
+
 	public static Piece createBlackKnight() {
 		return new Piece(Color.BLACK, Type.KNIGHT);
-	}		
-	
+	}
+
 	public static Piece createWhiteBishop() {
 		return new Piece(Color.WHITE, Type.BISHOP);
-	}	
-	
+	}
+
 	public static Piece createBlackBishop() {
 		return new Piece(Color.BLACK, Type.BISHOP);
-	}		
-	
+	}
+
 	public static Piece createWhiteQueen() {
 		return new Piece(Color.WHITE, Type.QUEEN);
-	}	
-	
+	}
+
 	public static Piece createBlackQueen() {
 		return new Piece(Color.BLACK, Type.QUEEN);
-	}		
-	
+	}
+
 	public static Piece createWhiteKing() {
 		return new Piece(Color.WHITE, Type.KING);
-	}	
-	
+	}
+
 	public static Piece createBlackKing() {
 		return new Piece(Color.BLACK, Type.KING);
-	}		
-	
+	}
+
 	public static Piece noPiece() {
 		return new Piece(Color.NO_COLOR, Type.NO_PIECE);
-	}	
-		
+	}
+
 	//-----getter-------
 	public boolean isWhite() {
-		if (color == Color.WHITE) 
+		if (color == Color.WHITE)
 			return true;
-		else 
+		else
 			return false;
 	}
-	
+
 	public boolean isBlack() {
-		if (color == Color.BLACK) 
+		if (color == Color.BLACK)
 			return true;
-		else 
+		else
 			return false;
 	}
-	
+
 	public char getRepresentation() {
 		Character representation = typeToRepresentation.get(this.type).charValue();
-		
+
 		if (isWhite())
 			representation = Character.toLowerCase(representation);
-		
-		return representation.charValue();	
+
+		return representation.charValue();
 	}
+
 	//-----getter/setter (POJO)-------
 	public Color getColor() {
 		return color;
 	}
 
-	
+
 	private void setColor(Color color) {
 		this.color = color;
 	}

@@ -1,9 +1,11 @@
 package agile.java.chess;
 
-import agile.java.chess.pieces.Piece.*;
-import agile.java.chess.pieces.Board;
-import agile.java.util.StringUtil;
 import junit.framework.TestCase;
+import agile.java.chess.pieces.Board;
+import agile.java.chess.pieces.Piece;
+import agile.java.chess.pieces.Piece.Color;
+import agile.java.chess.pieces.Piece.Type;
+import agile.java.util.StringUtil;
 
 public class BoardTest extends TestCase {
 
@@ -38,23 +40,36 @@ public class BoardTest extends TestCase {
 
 	public void testGetCountForSpecificPiece() {
 		board.initialize();
-		//TODO
-//		assertEquals(8, board.getCountForSpecificPiece(Color.WHITE, Type.PAWM));
-//		assertEquals(8, board.getCountForSpecificPiece(Color.BLACK, Type.PAWM));
-//		
-//		assertEquals(2, board.getCountForSpecificPiece(Color.WHITE, Type.ROOK));
-//		assertEquals(2, board.getCountForSpecificPiece(Color.BLACK, Type.ROOK));
-//		
-//		assertEquals(2, board.getCountForSpecificPiece(Color.WHITE, Type.KNIGHT));
-//		assertEquals(2, board.getCountForSpecificPiece(Color.BLACK, Type.KNIGHT));
-//		
-//		assertEquals(2, board.getCountForSpecificPiece(Color.WHITE, Type.BISHOP));
-//		assertEquals(2, board.getCountForSpecificPiece(Color.BLACK, Type.BISHOP));
-//		
-//		assertEquals(1, board.getCountForSpecificPiece(Color.WHITE, Type.QUEEN));
-//		assertEquals(1, board.getCountForSpecificPiece(Color.BLACK, Type.QUEEN));
-//		
-//		assertEquals(1, board.getCountForSpecificPiece(Color.WHITE, Type.KING));
-//		assertEquals(1, board.getCountForSpecificPiece(Color.BLACK, Type.KING));		
+		assertEquals(8, board.getCountForSpecificPiece(Color.WHITE, Type.PAWM));
+		assertEquals(8, board.getCountForSpecificPiece(Color.BLACK, Type.PAWM));
+
+		assertEquals(2, board.getCountForSpecificPiece(Color.WHITE, Type.ROOK));
+		assertEquals(2, board.getCountForSpecificPiece(Color.BLACK, Type.ROOK));
+
+		assertEquals(2, board.getCountForSpecificPiece(Color.WHITE, Type.KNIGHT));
+		assertEquals(2, board.getCountForSpecificPiece(Color.BLACK, Type.KNIGHT));
+
+		assertEquals(2, board.getCountForSpecificPiece(Color.WHITE, Type.BISHOP));
+		assertEquals(2, board.getCountForSpecificPiece(Color.BLACK, Type.BISHOP));
+
+		assertEquals(1, board.getCountForSpecificPiece(Color.WHITE, Type.QUEEN));
+		assertEquals(1, board.getCountForSpecificPiece(Color.BLACK, Type.QUEEN));
+
+		assertEquals(1, board.getCountForSpecificPiece(Color.WHITE, Type.KING));
+		assertEquals(1, board.getCountForSpecificPiece(Color.BLACK, Type.KING));
+	}
+
+	public void testGetPieceAtPos() {
+		board.initialize();
+		Piece piece = board.getPieceAtPos("a8");
+		assertTrue(piece!=null);
+		assertEquals(Color.BLACK, piece.getColor());
+		assertEquals(Type.ROOK, piece.getType());
+
+		piece = board.getPieceAtPos("e1");
+		assertTrue(piece!=null);
+		assertEquals(Color.WHITE, piece.getColor());
+		assertEquals(Type.KING, piece.getType());
+
 	}
 }
