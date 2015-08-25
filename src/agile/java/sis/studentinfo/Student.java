@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Student {
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
-	//page 190: emun pro
 	//public enum Grade {A, B, C, D, E, F};
+	//page 190: emun pro
 	public enum Grade {
 		A(4), B(3), C(2), D(1), F(0);
 		private int points;
@@ -27,15 +27,67 @@ public class Student {
 	//page 189: reconstruct
 	//private GradingStrategy gradingStrategy = new RegularGradingStrategy();
 	private GradingStrategy gradingStrategy = new BasicGrandingStrategy();
-
-	public Student(String name) {
-		setName(name);
+	//page 212
+	private String firstName = "";
+	private String middleName = "";
+	private String lastName;
+	
+	public Student(String fullName) {
+		setName(fullName);
 		setCredits(0);
+		List<String> nameParts = split(fullName);
+		setName(nameParts);
 	}
 
 //	void addGrade(String grade) {
 //		grades.add(grade);
 //	}
+
+	private void setName(List<String> nameParts) {
+//		if (nameParts.size() == 1)
+//			this.lastName = nameParts.get(0);
+//		else if (nameParts.size() ==2) {
+//			this.firstName = nameParts.get(0);
+//			this.lastName = nameParts.get(1);
+//		}
+//		else if (nameParts.size() == 3) {
+//			this.firstName = nameParts.get(0);
+//			this.middleName = nameParts.get(1);
+//			this.lastName = nameParts.get(2);
+//		}
+		//page 214
+		this.lastName = removeLast(nameParts);
+		String name = removeLast(nameParts);
+		if (nameParts.isEmpty()) 
+			this.firstName = name;
+		else {
+			this.middleName = name;
+			this.firstName = removeLast(nameParts);
+		}
+	}
+
+	private String removeLast(List<String> list) {
+		if (list.isEmpty()) 
+			return "";
+		return list.remove(list.size() - 1);
+	}
+
+	private List<String> split(String fullName) {
+		List<String> results = new ArrayList<String>();
+		StringBuffer word = new StringBuffer();
+		for(int i=0; i<fullName.length(); i++) {
+			char ch = fullName.charAt(i);
+			
+			if (!Character.isWhitespace(ch)) 
+				word.append(ch);
+			else 
+				if(word.length()>0) {
+					results.add(word.toString());
+					word = new StringBuffer();
+				}
+		}
+		return results;
+	}
 
 	void addGrade(Grade grade) {
 		grades.add(grade);
@@ -108,5 +160,17 @@ public class Student {
 
 	public void setGradingStrategy(GradingStrategy gradingStrategy) {
 		this.gradingStrategy = gradingStrategy;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 }
