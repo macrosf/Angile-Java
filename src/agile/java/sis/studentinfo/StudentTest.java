@@ -6,9 +6,30 @@ public class StudentTest extends junit.framework.TestCase {
 	private static final double GRADE_TOLERANCE = 0.05;
 	
 	public void testCreate() {
-		final String studentName = "Macros";
-		Student student = new Student(studentName);
-		assertEquals(studentName, student.getName());
+//		final String studentName = "Macros";
+//		Student student = new Student(studentName);
+//		assertEquals(studentName, student.getName());
+		//page 211
+		final String firstStudentName = "macros xia";
+		Student firstStudent = new Student(firstStudentName);
+		assertEquals(firstStudentName, firstStudent.getName());
+		assertEquals("macros", firstStudent.getFirstName());
+		assertEquals("xia", firstStudent.getLastName());
+		assertEquals("", firstStudent.getMiddleName());
+		
+		final String secondStudentName = "macros";
+		Student secondStudent = new Student(secondStudentName);
+		assertEquals(firstStudentName, secondStudent.getName());
+		assertEquals("", secondStudent.getFirstName());
+		assertEquals("macros", secondStudent.getLastName());
+		assertEquals("", secondStudent.getMiddleName());		
+		
+		final String thirdStudentName = "macros f xia";
+		Student thirdStudent = new Student(thirdStudentName);
+		assertEquals(firstStudentName, thirdStudent.getName());
+		assertEquals("macros", thirdStudent.getFirstName());
+		assertEquals("f", thirdStudent.getLastName());
+		assertEquals("xia", thirdStudent.getMiddleName());			
 	}
 
 	public void testFullTime() {
