@@ -15,7 +15,7 @@ abstract class Session implements Comparable<Session>{
 	private Date startDate;
 
 	private List<Student> students = new ArrayList<Student>();
-	private static int count;
+//	private static int count;
 	private int numberOfCredits;
 
 //	public static Session create(String department, String number, Date startDate) {
@@ -32,17 +32,17 @@ abstract class Session implements Comparable<Session>{
 	//page 205 add
 	abstract protected int getSessionLength();
 
-	private static void increasementCount() {
-		count++;
-	}
-
-	static void resetCount() {
-		count = 0;
-	}
-
-	static int getCount() {
-		return count;
-	}
+//	private static void increasementCount() {
+//		count++;
+//	}
+//
+//	static void resetCount() {
+//		count = 0;
+//	}
+//
+//	static int getCount() {
+//		return count;
+//	}
 
 	public int getNumberOfStudents() {
 		return numberOfStudents;
@@ -133,6 +133,14 @@ abstract class Session implements Comparable<Session>{
 
 	protected Date getStartDate() {
 		return startDate;
+	}
+
+	Student get(int i) {
+		return students.get(i);
+	}
+
+	int getNumberOfStudent() {
+		return students.size();
 	}
 
 //	protected int getSessionLength() {

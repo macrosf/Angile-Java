@@ -2,19 +2,20 @@ package agile.java.sis.studentinfo;
 
 import java.util.Date;
 
+import agile.java.util.DateUtil;
 import junit.framework.TestCase;
 
 //page 201
 abstract public class SessionTest extends TestCase {
 
 	private Session session;
-	private Date StartDate;
+	private Date startDate;
 
 	public static final int CREDITS = 3;
 
 	@Override
 	public void setUp() {
-		startDate = createDate(2003, 1, 6);
+		startDate = DateUtil.createDate(2003, 1, 6);
 		session = createSession("ENGL", "101", startDate);
 		session.setNumberOfCredits(CREDITS);
 	}
@@ -41,7 +42,7 @@ abstract public class SessionTest extends TestCase {
 		assertEquals(CREDITS, student2.getCredits());
 		assertEquals(2, session.getNumberOfStudents());
 		assertEquals(student1, session.get(0));
-		assertEquals(student1, session.get(1));
+		assertEquals(student2, session.get(1));
 	}
 
 	public void testComparable() {

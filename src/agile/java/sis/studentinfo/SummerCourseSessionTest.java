@@ -7,7 +7,7 @@ import agile.java.util.DateUtil;
 
 public class SummerCourseSessionTest extends SessionTest {
 
-	protected void testEndDate() {
+	public void testEndDate() {
 		Date startDate = DateUtil.createDate(2003, 6, 9);
 
 		Session session = createSession("ENGL", "200", startDate);

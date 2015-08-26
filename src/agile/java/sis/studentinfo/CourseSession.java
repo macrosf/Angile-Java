@@ -1,11 +1,7 @@
 package agile.java.sis.studentinfo;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-
+/*
 public class CourseSession implements Comparable<CourseSession>{
 //	final static String  NEW_LINE = System.getProperty("line.separator");
 //	public final static String ROSTER_REPORT_HEADER = "----HEADER----" + NEW_LINE;
@@ -88,41 +84,26 @@ public class CourseSession implements Comparable<CourseSession>{
 		return students;
 	}
 
-	/**
-	 * @return the department
-	 */
 	public String getDepartment() {
 		return department;
 	}
-	/**
-	 * @param department the department to set
-	 */
+
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	/**
-	 * @return the number
-	 */
+
 	public String getNumber() {
 		return number;
 	}
-	/**
-	 * @param number the number to set
-	 */
+
 	public void setNumber(String number) {
 		this.number = number;
 	}
 
-	/**
-	 * @return the numberOfCredits
-	 */
 	public int getNumberOfCredits() {
 		return numberOfCredits;
 	}
 
-	/**
-	 * @param numberOfCredits the numberOfCredits to set
-	 */
 	public void setNumberOfCredits(int numberOfCredits) {
 		this.numberOfCredits = numberOfCredits;
 	}
@@ -141,5 +122,37 @@ public class CourseSession implements Comparable<CourseSession>{
 
 	protected int getSessionLength() {
 		return 16;
+	}
+}
+*/
+
+//page 205
+public class CourseSession extends Session {
+	private static int count;
+	
+	public static CourseSession create(String department, String number, Date startDate) {
+		return new CourseSession(department, number, startDate);
+	}	
+	
+	protected CourseSession(String department, String number, Date startDate) {
+		super(department, number, startDate);
+		CourseSession.incrementCount();
+	}
+
+	@Override
+	protected int getSessionLength() {
+		return 16;
+	}
+
+	static int getCount() {
+		return count;
+	}
+
+	private static void incrementCount() {
+		++count;
+	}
+	
+	static void resetCount() {
+		count = 0;
 	}
 }
