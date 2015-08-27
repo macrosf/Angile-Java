@@ -1,6 +1,7 @@
 package agile.java.sis.studentinfo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Student {
@@ -72,26 +73,43 @@ public class Student {
 		return list.remove(list.size() - 1);
 	}
 
+//	private List<String> split(String fullName) {
+//		List<String> results = new ArrayList<String>();
+//		StringBuffer word = new StringBuffer();
+//		for(int i=0; i<fullName.length(); i++) {
+//			char ch = fullName.charAt(i);
+//
+//			if (!Character.isWhitespace(ch))
+//				word.append(ch);
+//			else
+//				if(word.length()>0) {
+//					results.add(word.toString());
+//					word = new StringBuffer();
+//				}
+//		}
+//
+//		if(word.length()>0)
+//			results.add(word.toString());
+//		return results;
+//	}
+
+	//page 240
 	private List<String> split(String fullName) {
-		List<String> results = new ArrayList<String>();
-		StringBuffer word = new StringBuffer();
-		for(int i=0; i<fullName.length(); i++) {
-			char ch = fullName.charAt(i);
-
-			if (!Character.isWhitespace(ch))
-				word.append(ch);
-			else
-				if(word.length()>0) {
-					results.add(word.toString());
-					word = new StringBuffer();
-				}
-		}
-
-		if(word.length()>0)
-			results.add(word.toString());
-		return results;
+		//solution 1
+		//return Arrays.asList(fullName.split(" "));		//not work
+		
+		//solution 2
+//		List<String> results = new ArrayList<String>();
+//		List<String> parts = Arrays.asList(fullName.split(" "));
+//		for (String part: parts)
+//			results.add(part);
+//		return results;
+		
+		//solution 3
+		List<String> parts = Arrays.asList(fullName.split(" "));
+		return new ArrayList<String>(parts);
 	}
-
+	
 	void addGrade(Grade grade) {
 		grades.add(grade);
 	}
