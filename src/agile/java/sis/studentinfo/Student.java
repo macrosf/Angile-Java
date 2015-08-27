@@ -31,7 +31,7 @@ public class Student {
 	private String firstName = "";
 	private String middleName = "";
 	private String lastName;
-	
+
 	public Student(String fullName) {
 		setName(fullName);
 		setCredits(0);
@@ -58,7 +58,7 @@ public class Student {
 		//page 214
 		this.lastName = removeLast(nameParts);
 		String name = removeLast(nameParts);
-		if (nameParts.isEmpty()) 
+		if (nameParts.isEmpty())
 			this.firstName = name;
 		else {
 			this.middleName = name;
@@ -67,7 +67,7 @@ public class Student {
 	}
 
 	private String removeLast(List<String> list) {
-		if (list.isEmpty()) 
+		if (list.isEmpty())
 			return "";
 		return list.remove(list.size() - 1);
 	}
@@ -77,15 +77,18 @@ public class Student {
 		StringBuffer word = new StringBuffer();
 		for(int i=0; i<fullName.length(); i++) {
 			char ch = fullName.charAt(i);
-			
-			if (!Character.isWhitespace(ch)) 
+
+			if (!Character.isWhitespace(ch))
 				word.append(ch);
-			else 
+			else
 				if(word.length()>0) {
 					results.add(word.toString());
 					word = new StringBuffer();
 				}
 		}
+
+		if(word.length()>0)
+			results.add(word.toString());
 		return results;
 	}
 

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
 //page 205
-abstract class Session implements Comparable<Session>{
+abstract class Session implements Comparable<Session>, Iterable<Student>{
 
 	private String department;
 	private String number;
@@ -80,6 +81,20 @@ abstract class Session implements Comparable<Session>{
 		return calendar.getTime();
 	}
 
+
+	@Override
+	public int compareTo(Session that) {
+		int compare = this.getDepartment().compareTo(that.getDepartment());
+		if (compare == 0)
+			compare = this.getNumber().compareTo(that.getNumber());
+		return compare;
+	}
+
+	@Override
+	public Iterator<Student> iterator() {
+		return students.iterator();
+	}
+
 	public List<Student> getAllStudents() {
 		return students;
 	}
@@ -121,14 +136,6 @@ abstract class Session implements Comparable<Session>{
 	 */
 	public void setNumberOfCredits(int numberOfCredits) {
 		this.numberOfCredits = numberOfCredits;
-	}
-
-	@Override
-	public int compareTo(Session that) {
-		int compare = this.getDepartment().compareTo(that.getDepartment());
-		if (compare == 0)
-			compare = this.getNumber().compareTo(that.getNumber());
-		return compare;
 	}
 
 	protected Date getStartDate() {

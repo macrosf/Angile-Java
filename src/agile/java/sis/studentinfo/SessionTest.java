@@ -1,9 +1,11 @@
 package agile.java.sis.studentinfo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import agile.java.util.DateUtil;
 import junit.framework.TestCase;
+import agile.java.util.DateUtil;
 
 //page 201
 abstract public class SessionTest extends TestCase {
@@ -58,5 +60,20 @@ abstract public class SessionTest extends TestCase {
 		Session sessionD = createSession("CSMC", "210", date);
 		assertTrue(sessionC.compareTo(sessionD) < 0);
 		assertTrue(sessionD.compareTo(sessionC) > 0);
+	}
+
+	public void testIterate() {
+		enrollStudents(session);
+		List<Student> results = new ArrayList<Student>();
+		for (Student student: session)
+			results.add(student);
+
+		assertEquals(results, session.getAllStudents());
+	}
+
+	private void enrollStudents(Session session) {
+		session.enroll(new Student("1"));
+		session.enroll(new Student("2"));
+		session.enroll(new Student("3"));
 	}
 }
