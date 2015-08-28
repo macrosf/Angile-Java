@@ -1,5 +1,6 @@
 package agile.java.sis.studentinfo.test;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -93,8 +94,9 @@ abstract public class SessionTest extends TestCase {
 			session.setUrl(url);
 			fail("expected exception due to invalid protocol in URL");
 		}
-		catch (SessionException success){
-			
+		catch (SessionException exceptedException){
+			Throwable cause = exceptedException.getCause();
+			assertEquals(MalformedURLException.class, cause.getClass());
 		}
 	}
 }

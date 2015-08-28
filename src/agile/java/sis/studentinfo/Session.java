@@ -161,7 +161,7 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 		}
 		catch (MalformedURLException e) {
 			log(e);
-			throw new SessionException();
+			throw new SessionException(e);
 		}
 		
 	}
