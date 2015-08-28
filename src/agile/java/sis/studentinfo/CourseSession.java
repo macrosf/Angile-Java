@@ -144,7 +144,7 @@ public class CourseSession extends Session {
 		return 16;
 	}
 
-	static int getCount() {
+	public static int getCount() {
 		return count;
 	}
 
@@ -152,7 +152,7 @@ public class CourseSession extends Session {
 		++count;
 	}
 	
-	static void resetCount() {
+	public static void resetCount() {
 		count = 0;
 	}
 }

@@ -1,6 +1,9 @@
-package agile.java.sis.studentinfo;
+package agile.java.sis.studentinfo.test;
 
+import agile.java.sis.studentinfo.HonorsGrandingStrategy;
+import agile.java.sis.studentinfo.Student;
 import agile.java.sis.studentinfo.Student.Grade;
+import agile.java.sis.studentinfo.exception.StudentNameFormatException;
 
 public class StudentTest extends junit.framework.TestCase {
 	private static final double GRADE_TOLERANCE = 0.05;
@@ -102,5 +105,16 @@ public class StudentTest extends junit.framework.TestCase {
 
 	private void assertGpa(Student student, double expectedGpa) {
 		assertEquals(expectedGpa,  student.getGpa(), GRADE_TOLERANCE);
+	}
+	
+	//page 251
+	public void testBadlyFormatedName() {
+		try{
+			new Student("a b c d");
+			fail("expected exception from 4-part name");
+		}
+		catch (StudentNameFormatException sucess) {
+			
+		}
 	}
 }

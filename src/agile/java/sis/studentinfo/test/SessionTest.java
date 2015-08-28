@@ -1,10 +1,13 @@
-package agile.java.sis.studentinfo;
+package agile.java.sis.studentinfo.test;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
+import agile.java.sis.studentinfo.Session;
+import agile.java.sis.studentinfo.Student;
+import agile.java.sis.studentinfo.exception.SessionException;
 import agile.java.util.DateUtil;
 
 //page 201
@@ -75,5 +78,23 @@ abstract public class SessionTest extends TestCase {
 		session.enroll(new Student("1"));
 		session.enroll(new Student("2"));
 		session.enroll(new Student("3"));
+	}
+	
+	//page 256
+	public void testSessionUrl() throws SessionException {
+		final String url = "http://course.langrsoft.com/cmsc3000";
+		session.setUrl(url);
+		assertEquals(url, session.getUrl().toString());
+	}
+	
+	public void testInvalidSessionUrl() {
+		final String url = "httsp://course.langrsoft.com/csmc3000";
+		try {
+			session.setUrl(url);
+			fail("expected exception due to invalid protocol in URL");
+		}
+		catch (SessionException success){
+			
+		}
 	}
 }

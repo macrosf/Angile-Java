@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import agile.java.sis.studentinfo.exception.StudentNameFormatException;
+
 public class Student {
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
 	//public enum Grade {A, B, C, D, E, F};
@@ -37,6 +39,10 @@ public class Student {
 		setName(fullName);
 		setCredits(0);
 		List<String> nameParts = split(fullName);
+		//page 251
+		final int maximumNumberOfNameParts = 3;
+		if (nameParts.size() > maximumNumberOfNameParts)
+			throw new StudentNameFormatException("xxxx");
 		setName(nameParts);
 	}
 
@@ -110,11 +116,11 @@ public class Student {
 		return new ArrayList<String>(parts);
 	}
 	
-	void addGrade(Grade grade) {
+	public void addGrade(Grade grade) {
 		grades.add(grade);
 	}
 
-	double getGpa() {
+	public double getGpa() {
 		if (grades.isEmpty())
 			return 0.0;
 
@@ -148,11 +154,11 @@ public class Student {
 //		return gradingStrategy.getGradePointFor(grade);
 //	}
 
-	void addCredits(int credits) {
+	public void addCredits(int credits) {
 		this.credits += credits;
 	}
 
-	boolean isFullTime() {
+	public boolean isFullTime() {
 		return credits>=CREDITS_REQUIRED_FOR_FULL_TIME;
 	}
 

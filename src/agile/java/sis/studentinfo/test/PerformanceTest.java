@@ -1,5 +1,6 @@
-package agile.java.sis.studentinfo;
+package agile.java.sis.studentinfo.test;
 
+import agile.java.sis.studentinfo.Performance;
 import junit.framework.TestCase;
 
 //231

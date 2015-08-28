@@ -1,5 +1,7 @@
 package agile.java.sis.studentinfo;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,8 +9,10 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+import agile.java.sis.studentinfo.exception.SessionException;
+
 //page 205
-abstract class Session implements Comparable<Session>, Iterable<Student>{
+public abstract class Session implements Comparable<Session>, Iterable<Student>{
 
 	private String department;
 	private String number;
@@ -18,6 +22,7 @@ abstract class Session implements Comparable<Session>, Iterable<Student>{
 	private List<Student> students = new ArrayList<Student>();
 //	private static int count;
 	private int numberOfCredits;
+	private URL url;
 
 //	public static Session create(String department, String number, Date startDate) {
 //		Session.increasementCount();
@@ -138,16 +143,36 @@ abstract class Session implements Comparable<Session>, Iterable<Student>{
 		this.numberOfCredits = numberOfCredits;
 	}
 
-	protected Date getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	Student get(int i) {
+	public Student get(int i) {
 		return students.get(i);
 	}
 
-	int getNumberOfStudent() {
+	public int getNumberOfStudent() {
 		return students.size();
+	}
+
+	public void setUrl(String urlString) throws SessionException{
+		try {
+			this.url = new URL(urlString);
+		}
+		catch (MalformedURLException e) {
+			log(e);
+			throw new SessionException();
+		}
+		
+	}
+
+	private void log(MalformedURLException e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public URL getUrl() {
+		return url;
 	}
 
 //	protected int getSessionLength() {
