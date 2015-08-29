@@ -167,8 +167,7 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 	}
 
 	private void log(MalformedURLException e) {
-		// TODO Auto-generated method stub
-		
+		e.printStackTrace();
 	}
 
 	public URL getUrl() {

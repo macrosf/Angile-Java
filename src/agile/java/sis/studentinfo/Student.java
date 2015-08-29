@@ -3,11 +3,15 @@ package agile.java.sis.studentinfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 import agile.java.sis.studentinfo.exception.StudentNameFormatException;
 
 public class Student {
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
+	public static final int MAX_NAME_PARTS = 3;
+	public static final String TOO_MANY_NAME_PARTS_MSG = 
+			"Student name '%s' contains more than %d parts";
 	//public enum Grade {A, B, C, D, E, F};
 	//page 190: emun pro
 	public enum Grade {
@@ -41,14 +45,25 @@ public class Student {
 		List<String> nameParts = split(fullName);
 		//page 251
 		final int maximumNumberOfNameParts = 3;
-		if (nameParts.size() > maximumNumberOfNameParts)
-			throw new StudentNameFormatException("xxxx");
+		if (nameParts.size() > maximumNumberOfNameParts) {
+			String message = 
+					String.format(TOO_MANY_NAME_PARTS_MSG,
+							fullName, MAX_NAME_PARTS);
+			log(message);
+			throw new StudentNameFormatException(message);
+		}
+			
 		setName(nameParts);
 	}
 
 //	void addGrade(String grade) {
 //		grades.add(grade);
 //	}
+	//page 263
+	private void log(String message) {
+		Logger logger = Logger.getLogger(getClass().getName());
+		logger.info(message);
+	}
 
 	private void setName(List<String> nameParts) {
 //		if (nameParts.size() == 1)
