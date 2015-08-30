@@ -1,4 +1,4 @@
-package agile.java.chaptor03;
+package agile.java.chapter03;
 
 import java.util.Calendar;
 import java.util.Date;

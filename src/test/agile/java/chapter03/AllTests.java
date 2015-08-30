@@ -1,4 +1,4 @@
-package test.agile.java.chaptor03;
+package test.agile.java.chapter03;
 
 import junit.framework.TestCase;
 import test.agile.java.chapter01.StudentTest;

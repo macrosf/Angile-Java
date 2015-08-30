@@ -1,10 +1,10 @@
-package test.agile.java.chaptor03;
+package test.agile.java.chapter03;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import agile.java.chaptor03.DateUtil;
+import agile.java.chapter03.DateUtil;
 import junit.framework.TestCase;
 
 public class DateUtilTest extends TestCase {

@@ -1,10 +1,10 @@
-package test.agile.java.chaptor03;
+package test.agile.java.chapter03;
 
 import junit.framework.TestCase;
 import agile.java.chapter01.Student;
-import agile.java.chaptor03.CourseSession;
-import agile.java.chaptor03.DateUtil;
-import agile.java.chaptor03.RosterReporter;
+import agile.java.chapter03.CourseSession;
+import agile.java.chapter03.DateUtil;
+import agile.java.chapter03.RosterReporter;
 
 public class RosterReporterTest extends TestCase {
 
