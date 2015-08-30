@@ -1,7 +1,11 @@
 package agile.java.sis.studentinfo.test;
 
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+
 import agile.java.sis.studentinfo.HonorsGrandingStrategy;
 import agile.java.sis.studentinfo.Student;
+import agile.java.sis.studentinfo.TestHandler;
 import agile.java.sis.studentinfo.Student.Grade;
 import agile.java.sis.studentinfo.exception.StudentNameFormatException;
 
@@ -109,6 +113,11 @@ public class StudentTest extends junit.framework.TestCase {
 	
 	//page 251
 	public void testBadlyFormatedName() {
+		//Logger logger = Logger.getLogger(Student.class.getName());
+		//logger.addHandler(handler);
+		Handler handler = new TestHandler();
+		Student.logger.addHandler(handler);
+
 		final String studentName = "a b c d";
 		try{
 			new Student(studentName);
@@ -118,12 +127,22 @@ public class StudentTest extends junit.framework.TestCase {
 			String message = String.format(Student.TOO_MANY_NAME_PARTS_MSG, 
 					studentName, Student.MAX_NAME_PARTS);
 			assertEquals(message,	expectedException.getMessage());
-			assertTrue(wasLogged(message));
+			//assertTrue(wasLogged(message, (TestHandler)handler));
+			assertEquals(message, ((TestHandler) handler).getMessage());
 		}
 	}
 
-	private boolean wasLogged(String message) {
-		// TODO Auto-generated method stub
-		return false;
+//	private boolean wasLogged(String message, TestHandler handler ) {
+//		return message.equals(handler.getMessage());
+//	}
+	
+	//page 274
+	public void testLoggingHierarchy() {
+		Logger logger = Logger.getLogger("agile.java.sis.studentinfo");
+		assertTrue(logger == Logger.getLogger("agile.java.sis.studentinfo"));
+		
+		Logger parent = Logger.getLogger("agile.java.sis");
+		assertEquals(parent, logger.getParent());
+		assertEquals(Logger.getLogger("agile.java"), parent.getParent());
 	}
 }

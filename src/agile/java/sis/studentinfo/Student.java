@@ -39,6 +39,10 @@ public class Student {
 	private String middleName = "";
 	private String lastName;
 
+	//page 268
+	public final static Logger logger =
+			Logger.getLogger(Student.class.getName());
+	
 	public Student(String fullName) {
 		setName(fullName);
 		setCredits(0);
@@ -49,7 +53,10 @@ public class Student {
 			String message = 
 					String.format(TOO_MANY_NAME_PARTS_MSG,
 							fullName, MAX_NAME_PARTS);
-			log(message);
+			//log(message);
+			//page 268
+			Student.logger.info(message);
+		
 			throw new StudentNameFormatException(message);
 		}
 			
@@ -59,11 +66,11 @@ public class Student {
 //	void addGrade(String grade) {
 //		grades.add(grade);
 //	}
-	//page 263
-	private void log(String message) {
-		Logger logger = Logger.getLogger(getClass().getName());
-		logger.info(message);
-	}
+//	//page 263
+//	private void log(String message) {
+//		Logger logger = Logger.getLogger(getClass().getName());
+//		logger.info(message);
+//	}
 
 	private void setName(List<String> nameParts) {
 //		if (nameParts.size() == 1)
@@ -136,6 +143,7 @@ public class Student {
 	}
 
 	public double getGpa() {
+		Student.logger.fine("begin getGpa " + System.currentTimeMillis());
 		if (grades.isEmpty())
 			return 0.0;
 
@@ -149,7 +157,9 @@ public class Student {
 			//total +=gradePointFor(grade);
 			total += gradingStrategy.getGradePointsFor(grade);
 		}
-		return total / grades.size();
+		double result = total / grades.size();
+		Student.logger.fine("end getGpa " + System.currentTimeMillis());
+		return result;
 	}
 
 //	private int gradePointFor(String grade) {
