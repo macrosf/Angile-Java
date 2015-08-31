@@ -1,7 +1,9 @@
 package agile.java.sis.studentinfo;
 
 import agile.java.sis.studentinfo.test.CourseSessionTest;
+import agile.java.sis.studentinfo.test.CourseTest;
 import agile.java.sis.studentinfo.test.PerformanceTest;
+import agile.java.sis.studentinfo.test.StudentDirectoryTest;
 import agile.java.sis.studentinfo.test.StudentTest;
 import agile.java.sis.studentinfo.test.SummerCourseSessionTest;
 import junit.framework.TestCase;
@@ -13,6 +15,8 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(CourseSessionTest.class);
 		suite.addTestSuite(SummerCourseSessionTest.class);
 		suite.addTestSuite(PerformanceTest.class);
+		suite.addTestSuite(StudentDirectoryTest.class);
+		suite.addTestSuite(CourseTest.class);
 		return suite;
 	}
 

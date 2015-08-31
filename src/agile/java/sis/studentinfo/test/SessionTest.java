@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
+import agile.java.sis.studentinfo.Course;
 import agile.java.sis.studentinfo.Session;
 import agile.java.sis.studentinfo.Student;
 import agile.java.sis.studentinfo.exception.SessionException;
@@ -22,13 +23,17 @@ abstract public class SessionTest extends TestCase {
 	@Override
 	public void setUp() {
 		startDate = DateUtil.createDate(2003, 1, 6);
-		session = createSession("ENGL", "101", startDate);
+		//session = createSession("ENGL", "101", startDate);
+		session = createSession(new Course("ENGL", "101"), startDate);
 		session.setNumberOfCredits(CREDITS);
 	}
 
+//	abstract protected Session createSession(
+//			String department, String number, Date startDate);
+	//page 285
 	abstract protected Session createSession(
-			String department, String number, Date startDate);
-
+	Course course, Date startDate);
+	
 	public void testCreate() {
 		assertEquals("ENGL", session.getDepartment());
 		assertEquals("101", session.getNumber());
@@ -53,15 +58,15 @@ abstract public class SessionTest extends TestCase {
 
 	public void testComparable() {
 		final Date date = new Date();
-		Session sessionA = createSession("CSMC", "101", date);
-		Session sessionB = createSession("ENGL", "101", date);
+		Session sessionA = createSession(new Course("CSMC", "101"), date);
+		Session sessionB = createSession(new Course("ENGL", "101"), date);
 		assertTrue(sessionA.compareTo(sessionB) < 0);
 		assertTrue(sessionB.compareTo(sessionA) > 0);
 
-		Session sessionC = createSession("CSMC", "101", date);
+		Session sessionC = createSession(new Course("CSMC", "101"), date);
 		assertEquals(0,sessionA.compareTo(sessionC));
 
-		Session sessionD = createSession("CSMC", "210", date);
+		Session sessionD = createSession(new Course("CSMC", "210"), date);
 		assertTrue(sessionC.compareTo(sessionD) < 0);
 		assertTrue(sessionD.compareTo(sessionC) > 0);
 	}

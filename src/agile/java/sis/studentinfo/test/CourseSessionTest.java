@@ -2,6 +2,7 @@ package agile.java.sis.studentinfo.test;
 
 import java.util.Date;
 
+import agile.java.sis.studentinfo.Course;
 import agile.java.sis.studentinfo.CourseSession;
 import agile.java.sis.studentinfo.Session;
 import agile.java.util.DateUtil;
@@ -86,7 +87,7 @@ public class CourseSessionTest extends SessionTest {
 	public void testCourseDates() {
 
 		Date startDate = DateUtil.createDate(2003, 1, 6);
-		Session session = createSession("ENGL", "200", startDate);
+		Session session = createSession(new Course("ENGL", "200"), startDate);
 		Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
 
 		assertEquals(sixteenWeeksOut, session.getEndDate());
@@ -94,17 +95,24 @@ public class CourseSessionTest extends SessionTest {
 
 	public void testCount() {
 		CourseSession.resetCount();
-		createSession("", "", new Date());
+		createSession(createCourse(), new Date());
 		assertEquals(1, CourseSession.getCount());
 
-		createSession("", "", new Date());
+		createSession(createCourse(), new Date());
 		assertEquals(2, CourseSession.getCount());
 	}
 
 	@Override
-	protected Session createSession(String department, String number,
+//	protected Session createSession(String department, String number,
+//			Date startDate) {
+	//page 286
+	protected Session createSession(Course course,
 			Date startDate) {
-
-		return CourseSession.create(department, number, startDate);
+		return CourseSession.create(
+				course.getDepartment(), course.getNumber(), startDate);
+	}
+	
+	private Course createCourse() {
+		return new Course("ENGL", "101"	);
 	}
 }
