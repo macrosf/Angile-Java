@@ -80,14 +80,40 @@ abstract public class SessionTest extends TestCase {
 		session.enroll(new Student("2"));
 		session.enroll(new Student("3"));
 	}
-	
+
+	//page 203
+//	public void testCourseDates() {
+//
+//		Date startDate = DateUtil.createDate(2003, 1, 6);
+//		Session session = createSession("ENGL", "200", startDate);
+//		Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
+//
+//		assertEquals(sixteenWeeksOut, session.getEndDate());
+//	}
+//
+//	public void testCount() {
+//		CourseSession.resetCount();
+//		createSession("", "", new Date());
+//		assertEquals(1, CourseSession.getCount());
+//
+//		createSession("", "", new Date());
+//		assertEquals(2, CourseSession.getCount());
+//	}
+//
+//	@Override
+//	protected Session createSession(String department, String number,
+//			Date startDate) {
+//
+//		return CourseSession.create(department, number, startDate);
+//	}
+
 	//page 256
 	public void testSessionUrl() throws SessionException {
 		final String url = "http://course.langrsoft.com/cmsc3000";
 		session.setUrl(url);
 		assertEquals(url, session.getUrl().toString());
 	}
-	
+
 	public void testInvalidSessionUrl() {
 		final String url = "httsp://course.langrsoft.com/csmc3000";
 		try {

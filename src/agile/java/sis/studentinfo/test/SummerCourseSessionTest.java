@@ -3,7 +3,7 @@ package agile.java.sis.studentinfo.test;
 import java.util.Date;
 
 import agile.java.sis.studentinfo.Session;
-import agile.java.sis.summer.SummerCourseSession;
+import agile.java.sis.studentinfo.SummerCourseSession;
 import agile.java.util.DateUtil;
 
 public class SummerCourseSessionTest extends SessionTest {

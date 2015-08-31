@@ -163,7 +163,7 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 			log(e);
 			throw new SessionException(e);
 		}
-		
+
 	}
 
 	private void log(MalformedURLException e) {

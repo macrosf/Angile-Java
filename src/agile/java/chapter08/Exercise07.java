@@ -1,9 +1,9 @@
-package agile.java.chapter08_1;
+package agile.java.chapter08;
 
 import junit.framework.TestCase;
 
 // page 278
-public class Chapter08_Exercise07 extends TestCase {
+public class Exercise07 extends TestCase {
 	public void testWithProblems() {
 		try {
 			doSomething();
