@@ -48,5 +48,6 @@ public class Course {
 		result = result * hashMultiplier + department.hashCode();
 		result = result * hashMultiplier + number.hashCode();
 		return result;
+		//return 1;
 	}
 }
