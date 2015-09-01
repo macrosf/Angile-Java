@@ -1,6 +1,6 @@
 package agile.java.sis.report;
 
-import agile.java.sis.studentinfo.CourseSession;
+import agile.java.sis.studentinfo.Session;
 import agile.java.sis.studentinfo.Student;
 
 public class RosterReporter {
@@ -8,18 +8,18 @@ public class RosterReporter {
 	public final static String ROSTER_REPORT_HEADER = "----HEADER----" + NEW_LINE;
 	public final static String ROSTER_REPORT_FOOTER = "----FOOTER----" + NEW_LINE;
 
-	private CourseSession session;
+	private Session session;
 
-	public RosterReporter(CourseSession session) {
-		this.setSession(session);
+	public RosterReporter(Session session2) {
+		this.setSession(session2);
 	}
 
-	public CourseSession getSession() {
+	public Session getSession() {
 		return session;
 	}
 
-	private void setSession(CourseSession session) {
-		this.session = session;
+	private void setSession(Session session2) {
+		this.session = session2;
 	}
 
 	public String getReport() {

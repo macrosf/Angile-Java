@@ -1,26 +1,27 @@
 package agile.java.sis.report;
 
+import static agile.java.util.StringUtil.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import agile.java.sis.studentinfo.CourseSession;
-import static agile.java.util.StringUtil.NEWLINE;
+import agile.java.sis.studentinfo.Session;
 
 public class CourseReport {
-	
-	private List<CourseSession> sessions  = 
-			new ArrayList<CourseSession>();
 
-	public void add(CourseSession session) {
+	private List<Session> sessions  =
+			new ArrayList<Session>();
+
+	public void add(Session session) {
 		sessions.add(session);
 	}
-	
+
 	public String text() {
 		Collections.sort(sessions);
 		StringBuilder builder = new StringBuilder();
-		for (CourseSession session: sessions) {
-			builder.append(session.getDepartment() + " " + 
+		for (Session session: sessions) {
+			builder.append(session.getDepartment() + " " +
 					session.getNumber() + NEWLINE);
 		}
 		return builder.toString();

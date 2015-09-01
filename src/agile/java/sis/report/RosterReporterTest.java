@@ -1,7 +1,9 @@
 package agile.java.sis.report;
 
 import junit.framework.TestCase;
+import agile.java.sis.studentinfo.Course;
 import agile.java.sis.studentinfo.CourseSession;
+import agile.java.sis.studentinfo.Session;
 import agile.java.sis.studentinfo.Student;
 import agile.java.util.DateUtil;
 
@@ -9,7 +11,13 @@ public class RosterReporterTest extends TestCase {
 
 	public void testRosterReport() {
 		//CourseSession session = new CourseSession("English", "101", DateUtil.createDate(2012, 10,10));
-		CourseSession session = CourseSession.create("English", "101", DateUtil.createDate(2012, 10,10));
+		//CourseSession session = CourseSession.create("English", "101", DateUtil.createDate(2012, 10,10));
+
+		//page 288
+		Session session =
+				CourseSession.create(
+						new Course("ENGL", "101"),
+						DateUtil.createDate(2012, 10,10));
 
 		session.enroll(new Student("A"));
 		session.enroll(new Student("B"));

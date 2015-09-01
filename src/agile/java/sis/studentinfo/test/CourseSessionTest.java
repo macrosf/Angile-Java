@@ -109,9 +109,9 @@ public class CourseSessionTest extends SessionTest {
 	protected Session createSession(Course course,
 			Date startDate) {
 		return CourseSession.create(
-				course.getDepartment(), course.getNumber(), startDate);
+				course, startDate);
 	}
-	
+
 	private Course createCourse() {
 		return new Course("ENGL", "101"	);
 	}

@@ -21,7 +21,7 @@ public class SummerCourseSessionTest extends SessionTest {
 	protected Session createSession(Course course,
 			Date startDate) {
 		return SummerCourseSession.create(
-				course.getDepartment(), course.getNumber(), startDate);
+				course, startDate);
 	}
 
 }

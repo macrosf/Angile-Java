@@ -129,13 +129,29 @@ public class CourseSession implements Comparable<CourseSession>{
 //page 205
 public class CourseSession extends Session {
 	private static int count;
-	
-	public static CourseSession create(String department, String number, Date startDate) {
-		return new CourseSession(department, number, startDate);
-	}	
-	
-	protected CourseSession(String department, String number, Date startDate) {
-		super(department, number, startDate);
+
+//	public static CourseSession create(String department, String number, Date startDate) {
+//		return new CourseSession(department, number, startDate);
+//	}
+
+	public static CourseSession create(Course course, Date startDate) {
+		return new CourseSession(course, startDate);
+	}
+
+//	protected CourseSession(String department, String number, Date startDate) {
+//		super(department, number, startDate);
+//		CourseSession.incrementCount();
+//	}
+
+	//page 289
+//	protected CourseSession(Course course, Date startDate) {
+//		super(course.getDepartment(), course.getNumber(), startDate);
+//		CourseSession.incrementCount();
+//	}
+
+	//page 290
+	protected CourseSession(Course course, Date startDate) {
+		super(course, startDate);
 		CourseSession.incrementCount();
 	}
 
@@ -151,7 +167,7 @@ public class CourseSession extends Session {
 	private static void incrementCount() {
 		++count;
 	}
-	
+
 	public static void resetCount() {
 		count = 0;
 	}

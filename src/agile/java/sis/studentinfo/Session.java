@@ -14,8 +14,8 @@ import agile.java.sis.studentinfo.exception.SessionException;
 //page 205
 public abstract class Session implements Comparable<Session>, Iterable<Student>{
 
-	private String department;
-	private String number;
+//	private String department;
+//	private String number;
 	private int numberOfStudents=0;
 	private Date startDate;
 
@@ -29,9 +29,16 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 //		return new Session(department, number, startDate);
 //	}
 
-	protected Session(String department, String number, Date startDate) {
-		this.department = department;
-		this.number = number;
+//	protected Session(String department, String number, Date startDate) {
+//		this.department = department;
+//		this.number = number;
+//		this.startDate = startDate;
+//	}
+
+	//page 290
+	private Course course;
+	protected Session(Course course, Date startDate) {
+		this.course = course;
 		this.startDate = startDate;
 	}
 
@@ -108,26 +115,26 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 	 * @return the department
 	 */
 	public String getDepartment() {
-		return department;
+		return course.getDepartment();
 	}
-	/**
-	 * @param department the department to set
-	 */
-	public void setDepartment(String department) {
-		this.department = department;
-	}
+//	/**
+//	 * @param department the department to set
+//	 */
+//	public void setDepartment(String department) {
+//		this.department = department;
+//	}
 	/**
 	 * @return the number
 	 */
 	public String getNumber() {
-		return number;
+		return course.getNumber();
 	}
-	/**
-	 * @param number the number to set
-	 */
-	public void setNumber(String number) {
-		this.number = number;
-	}
+//	/**
+//	 * @param number the number to set
+//	 */
+//	public void setNumber(String number) {
+//		this.number = number;
+//	}
 
 	/**
 	 * @return the numberOfCredits
