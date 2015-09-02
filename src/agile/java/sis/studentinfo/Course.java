@@ -50,4 +50,10 @@ public class Course {
 		return result;
 		//return 1;
 	}
+
+	//page 308
+	@Override
+	public String toString() {
+		return  department + " " + number;
+	}
 }

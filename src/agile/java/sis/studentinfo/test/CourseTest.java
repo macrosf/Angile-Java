@@ -54,7 +54,7 @@ public class CourseTest extends TestCase {
 //		Map<Course, String> map = new HashMap<Course, String>();
 //		map.put(courseA, "");
 //		assertTrue(map.containsKey(courseAPrime));
-		
+
 		//page 300
 		//apples & oranges
 		assertFalse(courseA.equals("CMSC-120"));
@@ -73,7 +73,7 @@ public class CourseTest extends TestCase {
 		//consistency
 		assertEquals(courseA.hashCode(), courseA.hashCode());
 	}
-	
+
 	//page 301
 	public void testHashCodePerformance() {
 		final int count = 10000;
@@ -83,11 +83,18 @@ public class CourseTest extends TestCase {
 			Course course = new Course("C" + i, "" + i);
 			map.put(course, "");
 		}
-		
+
 		long stop = System.currentTimeMillis();
 		long elapsed = stop - start;
 		final long arbitraryThreshold = 200;
-		assertTrue("elapsed time = " + elapsed, 
+		assertTrue("elapsed time = " + elapsed,
 				elapsed < arbitraryThreshold);
+	}
+
+	//page 308
+	public void testToString() {
+		Course course = new Course("ENGL", "301");
+		assertEquals("ENGL 301", course.toString());
+		assertEquals("Course: ENGL 301", "Course: " + course);
 	}
 }

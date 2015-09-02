@@ -2,6 +2,7 @@ package agile.java.sis.report;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -95,5 +96,16 @@ public class ReportCardTest extends TestCase {
 		assertEquals(expectedEntries, entries);
 
 		//assertEquals(expectedEntries, card.getMessages().entrySet()); //not work
+	}
+
+	//page 306
+	public void testKey() {
+		Set<Student.Grade> expectedGrades =
+				EnumSet.allOf(Student.Grade.class);
+		Set<Student.Grade> grades =
+				EnumSet.noneOf(Student.Grade.class);
+		for (Student.Grade grade: card.getMessages().keySet())
+			grades.add(grade);
+		assertEquals(expectedGrades, grades);
 	}
 }
