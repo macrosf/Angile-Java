@@ -237,4 +237,45 @@ public class Student {
 	//page 283
 	private String id;
 	
+	//page 324
+	public enum Flag {
+		ON_CAMPUS(1),
+		TAX_EXEMPT(2),
+		MINOR(4),
+		TROUBLEMAKER(8);
+		
+		private int mask;
+		
+		Flag(int mask) {
+			this.setMask(mask);
+		}
+
+		public int getMask() {
+			return mask;
+		}
+
+		private void setMask(int mask) {
+			this.mask = mask;
+		}
+	}
+	
+	private int settings = 0x0;
+	
+	public void set(Flag... flags) {
+		for (Flag flag: flags) 
+			setSettings(getSettings() | flag.getMask());
+	}
+	
+	public void unset(Flag... flags) {
+		for(Flag flag: flags)
+			setSettings(getSettings() & ~flag.getMask());
+	}
+
+	public int getSettings() {
+		return settings;
+	}
+
+	public void setSettings(int settings) {
+		this.settings = settings;
+	}
 }
