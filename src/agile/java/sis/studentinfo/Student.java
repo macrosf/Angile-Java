@@ -271,6 +271,13 @@ public class Student {
 			setSettings(getSettings() & ~flag.getMask());
 	}
 
+	public boolean isOn(Flag flag) {
+		return (settings&flag.mask) == flag.mask;
+	}
+	
+	public boolean isOff(Flag flag) {
+		return !isOn(flag);
+	}
 	public int getSettings() {
 		return settings;
 	}

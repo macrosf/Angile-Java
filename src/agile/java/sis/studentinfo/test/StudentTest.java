@@ -157,7 +157,7 @@ public class StudentTest extends junit.framework.TestCase {
 		assertTrue(student.isOn(Student.Flag.TAX_EXEMPT));
 		assertTrue(student.isOn(Student.Flag.MINOR));
 		
-		assertFalse(student.isOff(Student.Flag.ON_COMPUS));
+		assertFalse(student.isOff(Student.Flag.ON_CAMPUS));
 		assertTrue(student.isOff(Student.Flag.TROUBLEMAKER));
 		
 		student.unset(Student.Flag.ON_CAMPUS);
