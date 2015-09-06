@@ -1,7 +1,5 @@
 package agile.java.util;
 
-import agile.java.util.DateUtilTest;
-import agile.java.util.StringUtilTest;
 import junit.framework.TestCase;
 
 public class AllTests extends TestCase {
@@ -11,6 +9,7 @@ public class AllTests extends TestCase {
 
 		suite.addTestSuite(DateUtilTest.class);
 		suite.addTestSuite(StringUtilTest.class);
+		suite.addTestSuite(PasswordGeneratorTest.class);
 		return suite;
 	}
 

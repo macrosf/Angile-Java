@@ -29,6 +29,7 @@ public class Chapter10Practice extends TestCase {
 	}
 
 	//exercise 3
+	@SuppressWarnings("unused")
 	public void testExercise03() {
 		assertNotEquals(0.9, 0.005*0.2);
 
@@ -44,7 +45,7 @@ public class Chapter10Practice extends TestCase {
 		assertNotEquals(d1, d2);
 //		System.out.println(d1);
 //		System.out.println(d2);
-		System.out.println(d3);
+//		System.out.println(d3);	//8.999999999999998
 	}
 
 	public void testExercise04() {
@@ -61,6 +62,7 @@ public class Chapter10Practice extends TestCase {
 //		System.out.println(s);
 //		System.out.println(j);
 		assertEquals(0157255, Integer.parseInt(s, 8));
+		assertEquals("157255", Integer.toString(0xDEAD, 8));
 	}
 
 	@SuppressWarnings("unused")
