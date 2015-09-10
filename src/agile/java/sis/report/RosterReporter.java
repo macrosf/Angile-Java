@@ -1,8 +1,12 @@
 package agile.java.sis.report;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 
-import agile.java.sis.studentinfo.*;
+import agile.java.sis.studentinfo.Session;
+import agile.java.sis.studentinfo.Student;
 
 public class RosterReporter {
 //	public final static String  NEW_LINE = System.getProperty("line.separator");
@@ -34,19 +38,19 @@ public class RosterReporter {
 //
 //		return buffer.toString();
 //	}
-	
+
 	//page 341
 	public final static String  NEW_LINE = System.getProperty("line.separator");
 	public final static String ROSTER_REPORT_HEADER = "Student%n-%n";
 	public final static String ROSTER_REPORT_FOOTER = "%n# students = %d%n";
-	
+
 	private Session session;
 	private Writer writer;
-	
+
 	RosterReporter(Session session) {
 		this.session = session;
 	}
-	
+
 	void writeReport(Writer writer) throws IOException {
 		this.setWriter(writer);
 		writeHeader();
@@ -74,5 +78,17 @@ public class RosterReporter {
 
 	public void setWriter(Writer writer) {
 		this.writer = writer;
+	}
+
+	//page 345
+	public void writeReport(String filename) throws IOException {
+		Writer bufferedWriter =
+				new BufferedWriter(new FileWriter(filename));
+		try {
+			writeReport(bufferedWriter);
+		}
+		finally {
+			bufferedWriter.close();
+		}
 	}
 }
