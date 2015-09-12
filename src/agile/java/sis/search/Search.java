@@ -38,8 +38,8 @@ public class Search {
 		return exception != null;
 	}
 
-	public URL getUrl() {
-		return url;
+	public String getUrl() {
+		return url.toString();
 	}
 
 	public void execute() {
@@ -52,13 +52,18 @@ public class Search {
 	}
 	
 	private void searchUrl() throws IOException{
+		final String error404 = "http://langrsoft.com/index.php/404";
+		
 		URLConnection connection = url.openConnection();
 		InputStream input = connection.getInputStream();
+		
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new InputStreamReader(input));
 			String line;
 			while ((line = reader.readLine()) != null) {
+				if (StringUtil.occurrences(line, error404)>0)
+					throw new FileNotFoundException();	//throw exception to pass junit test
 				matches += StringUtil.occurrences(line, searchString);
 			}	
 		}
