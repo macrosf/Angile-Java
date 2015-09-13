@@ -1,4 +1,4 @@
-package agile.java.sis.report;
+package agile.java.sis.report.test;
 
 import junit.framework.TestCase;
 

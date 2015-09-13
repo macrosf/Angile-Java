@@ -6,7 +6,7 @@ import java.util.List;
 public class SuiteBuilder {
 
 	public List<String> gatherTestClassNames() {
-		// TODO 自動生成されたメソッド・スタブ
+		// TODO 
 		return null;
 	}
 

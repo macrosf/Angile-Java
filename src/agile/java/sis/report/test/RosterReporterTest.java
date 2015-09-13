@@ -1,4 +1,4 @@
-package agile.java.sis.report;
+package agile.java.sis.report.test;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +7,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 import junit.framework.TestCase;
+import agile.java.sis.report.RosterReporter;
 import agile.java.sis.studentinfo.Course;
 import agile.java.sis.studentinfo.CourseSession;
 import agile.java.sis.studentinfo.Session;

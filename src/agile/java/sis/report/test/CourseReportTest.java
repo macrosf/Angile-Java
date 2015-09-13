@@ -1,10 +1,11 @@
-package agile.java.sis.report;
+package agile.java.sis.report.test;
 
 import static agile.java.util.StringUtil.*;
 
 import java.util.Date;
 
 import junit.framework.TestCase;
+import agile.java.sis.report.CourseReport;
 import agile.java.sis.studentinfo.Course;
 import agile.java.sis.studentinfo.CourseSession;
 import agile.java.sis.studentinfo.Session;

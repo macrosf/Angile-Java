@@ -7,7 +7,7 @@ public class Entry {
 	private Student.Grade grade;
 	private String message;
 
-	Entry(Student.Grade grade, String message) {
+	public Entry(Student.Grade grade, String message) {
 		setGrade(grade);
 		setMessage(message);
 	}

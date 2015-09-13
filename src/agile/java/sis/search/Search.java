@@ -11,7 +11,8 @@ public class Search {
 	private String searchString;
 	private int matches = 0;
 	private Exception exception = null;
-	
+	private final String error404 = "http://langrsoft.com/index.php/404";
+
 	public Search(String urlString, String searchString) 
 			throws IOException {
 		setUrl(new URL(urlString));
@@ -41,7 +42,10 @@ public class Search {
 	public String getUrl() {
 		return url.toString();
 	}
-
+	private void setUrl(URL url) {
+		this.url = url;
+	}
+	
 	public void execute() {
 		try {
 			searchUrl();
@@ -51,11 +55,30 @@ public class Search {
 		}
 	}
 	
+//	private void searchUrl() throws IOException{
+//		
+//		URLConnection connection = url.openConnection();
+//		InputStream input = connection.getInputStream();
+//		
+//		BufferedReader reader = null;
+//		try {
+//			reader = new BufferedReader(new InputStreamReader(input));
+//			String line;
+//			while ((line = reader.readLine()) != null) {
+//				if (StringUtil.occurrences(line, error404)>0)
+//					throw new FileNotFoundException();	//throw exception to pass junit test
+//				matches += StringUtil.occurrences(line, searchString);
+//			}	
+//		}
+//		finally {
+//			if (reader != null)
+//				reader.close();
+//		}
+//	}
+
+	//page 416
 	private void searchUrl() throws IOException{
-		final String error404 = "http://langrsoft.com/index.php/404";
-		
-		URLConnection connection = url.openConnection();
-		InputStream input = connection.getInputStream();
+		InputStream input = getInputSteam(url);
 		
 		BufferedReader reader = null;
 		try {
@@ -73,7 +96,16 @@ public class Search {
 		}
 	}
 
-	private void setUrl(URL url) {
-		this.url = url;
+	private InputStream getInputSteam(URL url) throws IOException{
+		if (url.getProtocol().startsWith("http")) {
+			URLConnection connection = url.openConnection();
+			return connection.getInputStream();
+		}
+		else if (url.getProtocol().startsWith("file")) {
+			return new FileInputStream(url.getPath()); 
+		}
+		
+		return null;
 	}
+
 }

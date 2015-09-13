@@ -47,11 +47,11 @@ public class RosterReporter {
 	private Session session;
 	private Writer writer;
 
-	RosterReporter(Session session) {
+	public RosterReporter(Session session) {
 		this.session = session;
 	}
 
-	void writeReport(Writer writer) throws IOException {
+	public void writeReport(Writer writer) throws IOException {
 		this.setWriter(writer);
 		writeHeader();
 		writeBody();

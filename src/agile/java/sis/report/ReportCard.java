@@ -8,11 +8,11 @@ import agile.java.sis.studentinfo.Student;
 
 public class ReportCard {
 
-	static final String A_MESSAGE = "Excellent";
-	static final String B_MESSAGE = "Very good";
-	static final String C_MESSAGE = "Hmm...";
-	static final String D_MESSAGE = "You're not trying";
-	static final String F_MESSAGE = "Loser";
+	public static final String A_MESSAGE = "Excellent";
+	public static final String B_MESSAGE = "Very good";
+	public static final String C_MESSAGE = "Hmm...";
+	public static final String D_MESSAGE = "You're not trying";
+	public static final String F_MESSAGE = "Loser";
 
 	private Map<Student.Grade, String> messages = null;
 
@@ -20,7 +20,7 @@ public class ReportCard {
 		return getMessages().get(grade);
 	}
 
-	Map<Student.Grade, String> getMessages() {
+	public Map<Student.Grade, String> getMessages() {
 		if (messages == null)
 			//messages = new EnumMap<Student.Grade, String>(Student.Grade.class);
 			loadMessages();

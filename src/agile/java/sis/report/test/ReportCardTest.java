@@ -1,4 +1,4 @@
-package agile.java.sis.report;
+package agile.java.sis.report.test;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Set;
 
 import junit.framework.TestCase;
+import agile.java.sis.report.Entry;
+import agile.java.sis.report.ReportCard;
 import agile.java.sis.studentinfo.Student;
 
 public class ReportCardTest extends TestCase {
