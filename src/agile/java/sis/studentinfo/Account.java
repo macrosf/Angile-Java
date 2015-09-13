@@ -21,4 +21,13 @@ public class Account {
 		return balance.divide(
 				new BigDecimal(transactionCount), BigDecimal.ROUND_HALF_UP);
 	}
+
+	//page 425
+	public synchronized void withdraw(BigDecimal amount) {
+		if (amount.compareTo(balance) > 0)
+			return;
+		try {Thread.sleep(1);}
+		catch (InterruptedException e) {}
+		balance = balance.subtract(amount);
+	}
 }

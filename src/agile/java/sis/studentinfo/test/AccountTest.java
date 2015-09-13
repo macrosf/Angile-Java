@@ -22,4 +22,24 @@ public class AccountTest extends TestCase {
 		account.credit(new BigDecimal("2.99"));
 		assertEquals(new BigDecimal("4.70"), account.transactionAverage());
 	}
+	
+	//page 425
+	private Account account;
+	
+	@Override
+	protected void setUp() {
+		account = new Account();
+	}
+	
+	public void testWithdraw() throws Exception {
+		account.credit(new BigDecimal("100"));
+		account.withdraw(new BigDecimal("40"));
+		assertEquals(new BigDecimal("60.00"), account.getBalance());
+	}
+	
+	public void testWithdrawInsufficientFunds() {
+		account.credit(new BigDecimal("100"));
+		account.withdraw(new BigDecimal("140"));
+		assertEquals(new BigDecimal("100.00"), account.getBalance());
+	}
 }
