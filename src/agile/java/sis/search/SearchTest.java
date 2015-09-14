@@ -3,9 +3,9 @@ package agile.java.sis.search;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import junit.framework.TestCase;
 import agile.java.util.LineWriter;
 import agile.java.util.TestUtil;
-import junit.framework.TestCase;
 
 public class SearchTest extends TestCase {
 	// private static final String URL="http://www.langrsoft.com";
@@ -39,15 +39,16 @@ public class SearchTest extends TestCase {
 	}
 
 	// page 415
-	public static final String[] TEST_HTML = { 
-			"<html>", 
-			"<body>", 
+	public static final String[] TEST_HTML = {
+			"<html>",
+			"<body>",
 			"Book: Agile Java, by Jeff Langr<br />",
-			"Synopsis: Mr Langr teaches you<br />", 
-			"Java via test-driven development.<br />", "</body></html>" 
+			"Synopsis: Mr Langr teaches you<br />",
+			"Java via test-driven development.<br />", "</body></html>"
 			};
 
-	public static final String FILE = "/temp/testFileSearch.html";
+	//public static final String FILE = "/temp/testFileSearch.html";
+	public static final String FILE = "testFileSearch.html";
 	public static final String URL = "file:" + FILE;
 
 	@Override
