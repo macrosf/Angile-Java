@@ -10,5 +10,6 @@ public class AllTests extends TestCase {
 		suite.addTest(agile.java.sis.AllTests.suite());
 		suite.addTest(agile.java.util.AllTests.suite());
 		return suite;
+		
 	}
 }
