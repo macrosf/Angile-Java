@@ -11,7 +11,7 @@ import junit.framework.TestCase;
 public class ClockTest extends TestCase {
 	private Clock clock;
 	private Object monitor = new Object();
-	
+
 	public void testClock() throws Exception{
 		final int seconds = 5;
 		final List<Date> tics = new ArrayList<Date>();
@@ -45,45 +45,50 @@ public class ClockTest extends TestCase {
 		int now = calendar.get(Calendar.SECOND);
 		calendar.setTime(tics.get(i-1));
 		int then = calendar.get(Calendar.SECOND);
+
 		if (now == 0)
 			now = 60;
 		return now - then;
 	}
-	
+
 	//--------------------------------------------------
 	public void testClock2() throws Exception{
 
 		class Clock2 implements Runnable {
 			private ClockListener listener;
 			private boolean run = true;
-			
+
 			public Clock2(ClockListener listener) {
 				this.listener = listener;
 				new Thread(this).start();
 			}
-			
+
 			public void stop() {
 				run = false;
 			}
-			
+
 			@Override
 			public void run() {
 				long lastTime = System.currentTimeMillis();
+				Calendar calendar = new GregorianCalendar();
+
 				while (run) {
 					try {Thread.sleep(5);}
 					catch (InterruptedException e) {}
 					long now = System.currentTimeMillis();
 					if ( (now / 10) - (lastTime / 10) >= 1) {
-						listener.update(new Date(now));
+						//listener.update(new Date(now));
+						calendar.setTimeInMillis(now);
+						listener.update(calendar.getTime());
 						lastTime = now;
-					}			
+					}
 				}
-			}		
+			}
 		}
 
 		final int perseconds = 500;
 		final List<Date> tics = new ArrayList<Date>();
-		
+
 		ClockListener listener = new ClockListener() {
 			private int count = 0;
 			public void update(Date date) {
@@ -94,15 +99,15 @@ public class ClockTest extends TestCase {
 					}
 			}
 		};
-		
+
 		Clock2 clock2 = new Clock2(listener);
 		synchronized(monitor) {
 			monitor.wait();
 		}
 		clock2.stop();
 		verify2(tics, perseconds);
-	}	
-	
+	}
+
 	private void verify2(List<Date> tics, int perseconds) {
 		assertEquals(perseconds, tics.size());
 		for(int i=1; i<perseconds; i++)
@@ -115,8 +120,12 @@ public class ClockTest extends TestCase {
 		int now = calendar.get(Calendar.MILLISECOND);
 		calendar.setTime(tics.get(i-1));
 		int then = calendar.get(Calendar.MILLISECOND);
+
+		System.out.println(
+				String.format("now=[%d], then=[%d], difference=[%d]", now, then, now-then));
+
 		if (now == 0)
 			now = 1000;
 		return now - then;
-	}	
+	}
 }
