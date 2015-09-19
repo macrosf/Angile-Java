@@ -1,6 +1,11 @@
 package agile.java.sis.search;
 
 import junit.framework.TestCase;
+
+import java.util.List;
+
+import org.junit.*;
+
 import agile.java.util.LineWriter;
 import agile.java.util.TestUtil;
 
@@ -24,7 +29,12 @@ public class ServerTest extends TestCase {
 
 		server = new Server(listener);
 	}
-
+	
+	@Before
+	void initialize() {
+		numberOfResults = 0;
+	}
+	
 	@Override
 	protected void tearDown() throws Exception {
 		//page 430
@@ -55,5 +65,61 @@ public class ServerTest extends TestCase {
 				return false;
 		}
 		return true;
+	}
+	
+	//page 439
+	public void testSearch2() throws Exception{
+		long start = System.currentTimeMillis();
+		executeSearches();
+		long elapsed = System.currentTimeMillis() - start;
+		assertTrue(elapsed < 20);
+		waitForResults2();
+	}
+	
+	private void waitForResults2() {
+		long start = System.currentTimeMillis();
+		while (numberOfResults < URLS.length) {
+			try { Thread.sleep(1); }
+			catch (InterruptedException e) { }
+
+			if (System.currentTimeMillis() - start > TIMEOUT)
+				fail("timeout");
+		}		
+		
+	}
+
+	private void executeSearches() throws Exception {
+		for (String url : URLS)
+			server.add(new Search(url, "xxx"));
+	}
+
+	public void testLogs() throws Exception {
+		executeSearches();
+		waitForResults2();
+		verifyLogs();
+	}
+
+	private void verifyLogs() {
+		List<String> list = server.getLog();
+		assertEquals(URLS.length * 2, list.size());
+		for (int i = 0; i<URLS.length; i += 2) {
+			verifySameSearch(list.get(i), list.get(i+1));
+		}
+		
+		for (String line: list)
+			System.out.println(line);
+	}
+
+	private void verifySameSearch(String startSearchMsg, String endSearchMsg) {
+		String startSearch = substring(startSearchMsg, Server.START_MSG);
+		String endSearch = substring(endSearchMsg, Server.END_MSG);
+		assertEquals(startSearch, endSearch);
+	}
+
+	private String substring(String string, String upTo) {
+		int endIndex = string.indexOf(upTo);
+		assertTrue("didn't find" + upTo + " in " + string, 
+				endIndex != -1);
+		return string.substring(0, endIndex);
 	}
 }

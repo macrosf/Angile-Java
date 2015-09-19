@@ -1,10 +1,6 @@
 package agile.java.sis.clock;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.locks.*;
 
 import junit.framework.TestCase;
@@ -143,6 +139,41 @@ public class ClockTest extends TestCase {
 	
 	public void testClockLock() throws Exception{
 		final int seconds = 2;
+		final List<Date> tics = new ArrayList<Date>();
+		ClockListener listener = createClockListener(tics, seconds);
 		
+		clock = new Clock(listener);
+		lock.lock();
+		try {
+			receivedEnoughTics.await();
+		}
+		finally {
+			lock.unlock();
+		}
+		
+		clock.stop();
+		verify(tics, seconds);
+	}
+
+	private ClockListener createClockListener(
+			final List<Date> tics, final int seconds) {
+		return new ClockListener() {
+			private int count = 0;
+
+			@Override
+			public void update(Date date) {
+				tics.add(date);
+				if (++count == seconds) {
+					lock.lock();
+					try {
+						receivedEnoughTics.signalAll();
+					}				
+					finally {
+						lock.unlock();
+					}
+				}
+			}//end of update()
+			
+		};
 	}
 }

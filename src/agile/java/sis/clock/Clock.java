@@ -49,6 +49,10 @@ public class Clock implements Runnable {
 	//solution 2: (page 434)
 	@Override
 	public void run() {
+		//page 437
+		Thread.currentThread().setPriority(Thread.NORM_PRIORITY - 1);
+		//end of page 437
+		
 		long lastTime = System.currentTimeMillis();
 		while (run) {
 			try {Thread.sleep(10);}
