@@ -54,7 +54,7 @@ public class ServerTest extends TestCase {
 		assertTrue(averageLatency < 20);
 		assertTrue(waitForResults());
 	}
-
+	
 	private boolean waitForResults() {
 		long start = System.currentTimeMillis();
 		while (numberOfResults < URLS.length) {
@@ -122,4 +122,30 @@ public class ServerTest extends TestCase {
 				endIndex != -1);
 		return string.substring(0, endIndex);
 	}
+	
+	//page 445
+	public void testException() throws Exception {
+		final String errorMessage = "problem";
+		Search faultySearch = new Search(URLS[0], "") {
+			public void execute() {
+				throw new RuntimeException(errorMessage);
+			}
+		};
+		server.add(faultySearch);
+		waitForResults(1);
+		List<String> log = server.getLog();
+		assertTrue(log.get(0).indexOf(errorMessage) != -1 );
+	}	
+	
+	private boolean waitForResults(int count) {
+		long start = System.currentTimeMillis();
+		while (numberOfResults < count) {
+			try { Thread.sleep(1); }
+			catch (InterruptedException e) { }
+
+			if (System.currentTimeMillis() - start > TIMEOUT)
+				return false;
+		}
+		return true;
+	}	
 }
