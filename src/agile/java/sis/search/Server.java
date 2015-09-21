@@ -86,8 +86,21 @@ public class Server extends Thread {
 	}	
 	
 	private void execute(final Search search) {
-		new Thread(new Runnable(){
-
+//		new Thread(new Runnable(){
+//
+//			@Override
+//			public void run() {
+//				log(START_MSG, search);
+//				search.execute();
+//				log(END_MSG, search);
+//				listener.executed(search);
+//				completeLog.addAll(threadLog.get());
+//			}
+//			
+//		}).start();
+		
+		//page 446
+		Thread thread = new Thread( new Runnable(){
 			@Override
 			public void run() {
 				log(START_MSG, search);
@@ -95,13 +108,25 @@ public class Server extends Thread {
 				log(END_MSG, search);
 				listener.executed(search);
 				completeLog.addAll(threadLog.get());
+			}		
+		});
+		
+		thread.setUncaughtExceptionHandler(
+			new Thread.UncaughtExceptionHandler() {
+				@Override
+				public void uncaughtException(Thread th, Throwable thrown) {
+					completeLog.add(search + " " + thrown.getMessage());
+					listener.executed(search);
+				}
 			}
-			
-		}).start(); 
+		);
+
+		thread.start();
 	}
 
 	private void log(String message, Search search) {
 		threadLog.get().add(
 				search + " " + message + " at " + new Date());
 	}
+	
 }
