@@ -31,7 +31,8 @@ public class AlarmClockTest extends TestCase {
 //	}
 	
 	//page 447: exercise 3
-	public void testAlarmClock2() {
+	private AlarmClock clock;
+	public void testAlarmClock2() throws InterruptedException {
 		
 		final Map<String, Date> tics = new HashMap<String, Date>();
 		Map<String, Date> verifyTics = new HashMap<String, Date>();
@@ -47,7 +48,7 @@ public class AlarmClockTest extends TestCase {
 			}
 		};	
 		
-		AlarmClock clock = new AlarmClock(listener);
+		clock = new AlarmClock(listener);
 		Calendar calendar = new GregorianCalendar();
 		calendar.add(Calendar.SECOND, 1);
 		clock.addAlarm("1 second after", 1);
@@ -56,7 +57,6 @@ public class AlarmClockTest extends TestCase {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		calendar.setTime(new Date());
@@ -64,7 +64,16 @@ public class AlarmClockTest extends TestCase {
 		clock.addAlarm("2 second after", 2);
 		verifyTics.put("2 second after", calendar.getTime());
 		
+		waitForAlarm();
+		clock.stop();
 		verify(verifyTics, tics);
+	}
+
+	private void waitForAlarm() throws InterruptedException {
+		while (clock.getAlarmCount()>0) {
+			Thread.sleep(100);
+		}
+		
 	}
 
 	private void verify(Map<String, Date> verifyTics, Map<String, Date> tics) {
